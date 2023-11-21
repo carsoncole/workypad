@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@layer base {
+  a {
+    @apply text-orange-500 dark:text-orange-400 hover:text-orange-900;
+  }
+}
+
 /*
 
 @layer components {
