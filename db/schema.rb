@@ -10,9 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_21_175229) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_21_200029) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "jobs", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "entity"
+    t.string "title"
+    t.string "url"
+    t.text "description"
+    t.integer "status", default: 0
+    t.integer "order", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_jobs_on_user_id"
+  end
+
+  create_table "notes", force: :cascade do |t|
+    t.bigint "job_id", null: false
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["job_id"], name: "index_notes_on_job_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -26,4 +47,5 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_21_175229) do
     t.index ["remember_token"], name: "index_users_on_remember_token", unique: true
   end
 
+  add_foreign_key "notes", "jobs"
 end

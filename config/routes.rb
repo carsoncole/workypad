@@ -1,5 +1,16 @@
 Rails.application.routes.draw do
-  root 'public#index'
+
+  constraints Clearance::Constraints::SignedIn.new do
+    root to: "jobs#index", as: :signed_in_root
+  end
+
+  constraints Clearance::Constraints::SignedOut.new do
+    root to: "clearance/sessions#new"
+  end
+
+  resources :jobs do
+    resources :notes
+  end
 
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]

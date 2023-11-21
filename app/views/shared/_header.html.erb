@@ -5,7 +5,7 @@
 
   <div>
     <% if signed_in? %>
-      <%= button_to 'Sign out', sign_out_path, method: :delete, class: 'align-middle' %>
+      <%= button_to 'Sign out', sign_out_path, method: :delete, class: 'align-middle text-gray-500 dark:text-gray-400 ' %>
     <% else %>
       <%= link_to 'Sign in', sign_in_path, class: 'align-middle' %>
     <% end %>
