@@ -1,24 +1,13 @@
-# README
+# WorkyPad
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a Ruby on Rails application for managing job prospecting, utilizing Hotwire and Stimulus.
 
-Things you may want to cover:
 
-* Ruby version
+## Installation
 
-* System dependencies
+This is configured for Ruby 3.2 and Ruby on Rails 7.1 and used PostgreSQL with [Kamal](https://github.com/basecamp/kamal), which should be adjusted for whatever host you choose to use. The default is configured for Digital Ocean.
 
-* Configuration
 
-* Database creation
+## Licensing
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+WorkyPad is Copyright © 2023 Carson Cole. It is free software, and may be redistributed under the terms specified in the MIT-LICENSE file.
