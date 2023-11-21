@@ -4,7 +4,7 @@ image: carsoncole/workypad
 servers:
   web:
     hosts:
-      - 67.207.80.137
+      - 147.182.129.52
     labels:
       traefik.http.routers.domain.rule: Host(`workypad.com`)
       traefik.http.routers.domain.entrypoints: websecure
@@ -18,7 +18,7 @@ registry:
 
 env:
   clear:
-    DB_HOST: 67.207.80.137
+    DB_HOST: 147.182.129.52
   secret:
     - RAILS_MASTER_KEY
     - POSTGRES_PASSWORD
@@ -26,7 +26,7 @@ env:
 accessories:
   db:
     image: postgres:15
-    host: 67.207.80.137
+    host: 147.182.129.52
     port: 5432
     env:
       clear:
