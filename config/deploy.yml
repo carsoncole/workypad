@@ -1,4 +1,4 @@
-service: about
+service: workypad
 image: carsoncole/workypad
 
 servers:
