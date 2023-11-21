@@ -1,0 +1,13 @@
+<header class='flex justify-between p-3 bg-amber-950'>
+  <div class='font-bold text-2xl'>
+    <%= link_to "workyPad", root_path, class: 'text-white tracking-tight' %>
+  </div>
+
+  <div>
+    <% if signed_in? %>
+      <%= button_to 'Sign out', sign_out_path, method: :delete, class: 'text-white' %>
+    <% else %>
+      <%= link_to 'Sign in', sign_in_path, class: 'text-white' %>
+    <% end %>
+  </div>
+</header>

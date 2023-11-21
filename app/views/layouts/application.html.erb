@@ -13,7 +13,8 @@
 
   <body>
     <%= render 'shared/header' %>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <%= render 'shared/flash' %>
+    <main class="container mx-auto mt-20 px-5 flex">
       <%= yield %>
     </main>
   </body>

@@ -1,0 +1,9 @@
+<div id="flash" class='h-24 mb-8'>
+  <% flash.each do |key, value| %>
+    <%- if key == 'alert' %>
+      <div class="flash <%= key %> bg-red-600 text-white align-middle px-7 py-3"><%= value %></div>
+    <%- else %>
+      <div class="flash <%= key %> bg-teal-600 text-white align-middle px-7 py-3"><%= value %></div>
+    <%- end %>
+  <% end %>
+</div>
