@@ -1,6 +1,10 @@
-<div id="clearance" class="sign-in">
-  <h1 class="text-3xl font-bold dark:text-white"><%= t(".title") %></h1 >
+<div id="clearance" class="sign-in md:flex md:justify-evenly mx-auto">
+  <div class="text-6xl dark:text-white font-medium tracking-tight md:border-r-2 mb-10 md:mb-0 md:pr-10 md:mr-10">
+    WorkyPad
+  </div>
+  <div>
+    <h1 class="text-2xl font-bold dark:text-white"><%= t(".title") %></h1 >
 
-  <%= render partial: '/sessions/form' %>
-
+    <%= render partial: '/sessions/form' %>
+  </div>
 </div>
