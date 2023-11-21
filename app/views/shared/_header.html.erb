@@ -1,13 +1,13 @@
-<header class='flex justify-between p-3 bg-amber-950'>
+<header class='flex justify-between align-middle p-3 bg-gray-900 dark:bg-gray-700'>
   <div class='font-bold text-2xl'>
-    <%= link_to "workyPad", root_path, class: 'text-white tracking-tight' %>
+    <%= link_to "workyPad", root_path, class: 'align-middle tracking-tight dark:text-white' %>
   </div>
 
   <div>
     <% if signed_in? %>
-      <%= button_to 'Sign out', sign_out_path, method: :delete, class: 'text-white' %>
+      <%= button_to 'Sign out', sign_out_path, method: :delete, class: 'align-middle' %>
     <% else %>
-      <%= link_to 'Sign in', sign_in_path, class: 'text-white' %>
+      <%= link_to 'Sign in', sign_in_path, class: 'align-middle' %>
     <% end %>
   </div>
 </header>

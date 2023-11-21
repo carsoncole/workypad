@@ -5,7 +5,7 @@
 
 @layer base {
   a {
-    @apply text-orange-500 dark:text-orange-400 hover:text-orange-900;
+    @apply text-gray-500 dark:text-gray-400 hover:text-gray-900;
   }
 }
 
