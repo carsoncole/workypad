@@ -22,7 +22,7 @@ class NotesControllerTest < ActionDispatch::IntegrationTest
       post job_notes_url(@job, as: @user), params: { note: { content: @note.content, job_id: @note.job_id } }
     end
 
-    assert_redirected_to job_note_url(@job, Note.last)
+    assert_redirected_to job_notes_url(@job)
   end
 
   test "should show note" do

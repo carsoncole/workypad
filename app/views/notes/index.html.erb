@@ -1,14 +1,26 @@
 <div class="w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-  <% end %>
+  <p class="mb-6">
+    <%= link_to root_path, class: '' do %>
+      <svg fill="none" stroke="currentColor" stroke-width="1.5" class="w-6 h-6 inline-block" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18"/></svg>
+      Back to Jobs
+    <% end %>
+  </p>
 
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Notes</h1>
-    <%= link_to "New note", new_job_note_path(@job), class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
-  </div>
 
-  <div id="notes" class="min-w-full">
-    <%= render @notes %>
+  <div class="md:flex gap-10 items-center">
+
+    <div class="hidden md:block">
+      <%= render @job %>
+    </div>
+
+
+    <div id="notes" class="">
+      <div class="flex justify-between md:items-center">
+        <h1 class="font-bold text-4xl">Notes</h1>
+        <%= link_to "New note", new_job_note_path(@job), class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+      </div>
+
+      <%= render partial: @notes, spacer_template: "notes_spacer" %>
+    </div>
   </div>
 </div>

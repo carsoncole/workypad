@@ -5,7 +5,7 @@ class NotesController < ApplicationController
 
   # GET /notes or /notes.json
   def index
-    @notes = @job.notes
+    @notes = @job.notes.order(id: :desc)
   end
 
   # GET /notes/1 or /notes/1.json
@@ -27,7 +27,7 @@ class NotesController < ApplicationController
 
     respond_to do |format|
       if @note.save
-        format.html { redirect_to job_note_url(@job, @note), notice: "Note was successfully created." }
+        format.html { redirect_to job_notes_url(@job) }
         format.json { render :show, status: :created, location: @note }
       else
         format.html { render :new, status: :unprocessable_entity }

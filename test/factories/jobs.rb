@@ -1,11 +1,8 @@
 FactoryBot.define do
   factory :job do
-    entity { "MyString" }
-    title { "MyString" }
-    url { "MyString" }
-    description { "MyText" }
-    status { 1 }
-    order { 1 }
+    entity { Faker::Company.name }
+    title  { Faker::Job.title }
+    url { Faker::Internet.url }
     user
   end
 end

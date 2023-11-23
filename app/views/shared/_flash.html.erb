@@ -1,4 +1,5 @@
-<div id="flash" class='h-12 mb-6'>
+<%# OPTIMIZE Added disappearing flash messages %>
+<div id="flash" class='h-12 mb-10 font-bold'>
   <% flash.each do |key, value| %>
     <%- if alert.present? %>
       <div class="flash <%= key %> bg-red-50 text-red-500 align-middle px-7 py-2"><%= value %></div>

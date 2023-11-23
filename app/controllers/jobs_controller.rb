@@ -37,14 +37,19 @@ class JobsController < ApplicationController
 
   # PATCH/PUT /jobs/1 or /jobs/1.json
   def update
-    respond_to do |format|
-      if @job.update(job_params)
-        format.html { redirect_to job_url(@job), notice: "Job was successfully updated." }
-        format.json { render :show, status: :ok, location: @job }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @job.errors, status: :unprocessable_entity }
-      end
+    if params[:up]
+      @job.reorder_up!
+      redirect_to jobs_url
+    elsif params[:down]
+      @job.reorder_down!
+      redirect_to jobs_url
+    elsif params[:closed]
+      @job.update(status: 'closed', order: 0)
+      redirect_to jobs_url
+    elsif @job.update(job_params)
+      redirect_to jobs_url, notice: "Job was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -66,6 +71,6 @@ class JobsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def job_params
-      params.require(:job).permit(:entity, :title, :url, :description, :status, :order)
+      params.require(:job).permit(:entity, :title, :url, :description, :status, :order, :source_id)
     end
 end

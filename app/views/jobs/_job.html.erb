@@ -1,58 +1,67 @@
-<div id="<%= dom_id job %>" class='border rounded-lg px-3 pb-3 w-80 shadow bg-white'>
-  <div class="grid grid-cols-2 gap-2 content-stretch border-b py-2 mb-6 font-bold text-sm uppercase">
+<div id="<%= dom_id job %>" class='border rounded-lg p-4 w-full md:w-72 sm:w-max shadow-lg bg-white'>
+  <div class="grid grid-cols-2 gap-2 content-stretch border-b mb-6 font-bold text-sm uppercase">
     <div class= 'align-middle'><%= job.status.capitalize %></div>
-    <div class='text-right inline-block'>
-      <%= link_to job_path(job, up: true), method: :post, data: { 'turbo-method': :patch }, class: 'inline-block' do %>
-        <svg fill="none" stroke="currentColor" stroke-width="1.5" class="w-6 h-6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75 12 3m0 0 3.75 3.75M12 3v18"/></svg>
-      <%- end %>
-      <%= link_to job_path(job, down: true), method: :post, data: { 'turbo-method': :patch }, class: 'inline-block' do %>
-        <svg fill="none" stroke="currentColor" stroke-width="1.5" class="w-6 h-6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25 12 21m0 0-3.75-3.75M12 21V3"/></svg>
-      <%- end %>
-    </div>
+    <% if action_name == 'index' && controller_name == 'jobs' %>
+      <div class='text-right inline-block'>
+        <%= button_to job_path(job, up: true), method: :patch, data: { 'turbo-method': :patch }, form_class: 'inline-block text-gray-400 hover:text-gray-800 dark:hover:text-gray-800' do %>
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" class="w-6 h-6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75 12 3m0 0 3.75 3.75M12 3v18"/></svg>
+        <%- end %>
+        <%= button_to job_path(job, down: true), method: :patch, data: { 'turbo-method': :patch }, form_class: 'inline-block text-gray-400 hover:text-gray-800 dark:hover:text-gray-800' do %>
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" class="w-6 h-6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25 12 21m0 0-3.75-3.75M12 21V3"/></svg>
+        <%- end %>
+      </div>
+    <% end %>
   </div>
 
   <div class='h-24'>
-    <div class="">
+    <div class="tracking-tight">
       <%= job.entity %>
     </div>
 
-    <div class="text-xl font-medium mb-5">
+    <div class="text-xl font-medium mb-5 tracking-tight">
       <%= job.title %>
     </div>
   </div>
 
-  <div class='h-24 bg-gray-100 text-sm p-2 max-w-prose'>
-    <%- if job.notes.last.present? %>
-      <div class='font-bold inline-block pr-2'><%= job.notes.last.created_at.strftime("%b %d '%Y") %></div>
-      <%= truncate(job.notes.last.content, length: 120)%>
-    <%- end %>
-  </div>
-
-  <div class="my-5">
-    <%- if job.url.present? %>
-      <%= link_to job.url, target: '_blank' do %>
-            <div class='inline-block'>Job listing</div>
-            <div class='inline-block'>
-              <svg fill="none" stroke="currentColor" stroke-width="1.5" class="w-4 h-4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"/></svg>
-            </div>
-      <% end %>
-    <% else %>
-      &nbsp;
+  <% if action_name == 'index' && controller_name == 'jobs' %>
+    <%= link_to job_notes_path(job), class: "h-32 bg-gray-100 text-sm py-3 px-2 tracking-tight block text-truncate overflow-hidden" do %>
+      <%- if job.notes.last.present? %>
+        <div class="float-left pr-1 pb-1 pt-1">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" class="w-8 h-8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9z"/></svg>
+        </div>
+        <div class="">
+          <span class='font-bold pr-2 text-black'><%= job.notes.last.created_at.strftime("%b %d '%Y") %></span>
+          <span class='text-black max-w-prose'><%= truncate(job.notes.last.content, length: 130)%></span>
+        </div>
+      <%- end %>
     <% end %>
-  </div>
-
-  <% if action_name != "show" %>
-    <%= link_to "Notes", job_notes_path(job), class: "rounded-lg py-1 px-2 bg-gray-100 inline-block font-medium text-sm" %>
-    <%= link_to "View", job, class: "rounded-lg py-1 ml-1 px-2 bg-gray-100 inline-block font-medium text-sm" %>
-    <%= link_to "Edit", edit_job_path(job), class: "rounded-lg py-1 ml-1 px-2 bg-gray-100 inline-block font-medium text-sm" %>
   <% end %>
 
-  <div class='mt-3 text-right'>
-    <%= link_to job, method: :delete, data: { "turbo-method": :delete, "turbo-confirm": 'Are you sure?' }, class: 'inline-block' do %>
-        <svg fill="none" stroke="currentColor" stroke-width="1.5" class="w-6 h-6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"/></svg>
-    <% end %>
-    <%= link_to job_path(job, closed: true), method: :patch, data: { "turbo-method": :patch }, class: 'inline-block' do %>
-      <svg fill="none" stroke="currentColor" stroke-width="1.5" class="w-6 h-6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m20.25 7.5-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"/></svg>
-    <% end %>
+  <div class='mt-3 flex justify-between'>
+    <div>
+      <% if action_name != "show" %>
+        <%# link_to "Notes", job_notes_path(job), class: "rounded-lg py-1 px-2 bg-gray-100 inline-block font-medium text-sm" %>
+        <%= link_to "More", job, class: "rounded-lg py-1 ml-1 px-2 bg-gray-100 inline-block font-medium text-sm" %>
+        <%= link_to "Edit", edit_job_path(job), class: "rounded-lg py-1 ml-1 px-2 bg-gray-100 inline-block font-medium text-sm" %>
+        <%- if job.url.present? %>
+          <%= link_to job.url, target: '_blank', class: "rounded-lg py-1 ml-1 px-2 bg-gray-100 inline-block font-medium text-sm" do %>
+                <div class='inline-block'>Listing</div>
+                <div class='inline-block'>
+                  <svg fill="none" stroke="currentColor" stroke-width="1.5" class="w-4 h-4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"/></svg>
+                </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+    <div>
+      <% if action_name != "show" %>
+        <%= link_to job, method: :delete, data: { "turbo-method": :delete, "turbo-confirm": 'Are you sure?' }, class: 'inline-block' do %>
+            <svg fill="none" stroke="currentColor" stroke-width="1.5" class="w-6 h-6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"/></svg>
+        <% end %>
+        <%= link_to job_path(job, closed: true), method: :patch, data: { "turbo-method": :patch }, class: 'inline-block' do %>
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" class="w-6 h-6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m20.25 7.5-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"/></svg>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
