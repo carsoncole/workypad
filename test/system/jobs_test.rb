@@ -27,7 +27,7 @@ class JobsTest < ApplicationSystemTestCase
 
   test "should update Job" do
     visit job_url(@job, as: @user)
-    click_on "Edit this job", match: :first
+    click_on "edit_job_#{@job.id}", match: :first
 
     fill_in "Description", with: @job.description
     fill_in "Entity", with: @job.entity
@@ -39,10 +39,21 @@ class JobsTest < ApplicationSystemTestCase
     assert_text "Job was successfully updated"
   end
 
+  test "should archive Job" do
+    visit job_url(@job, as: @user)
+    click_on "archive_job_#{@job.id}"
+    assert_text "Job was successfully archived"
+    within "#status" do
+      assert_text "ARCHIVED"
+    end
+  end
+
+
   test "should destroy Job" do
     visit job_url(@job, as: @user)
-    click_on "Destroy this job", match: :first
-
+    accept_confirm do
+      click_on "delete_job_#{@job.id}", match: :first
+    end
     assert_text "Job was successfully destroyed"
   end
 end

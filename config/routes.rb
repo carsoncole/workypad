@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  resources :sources
-
   constraints Clearance::Constraints::SignedIn.new do
     root to: "jobs#index", as: :signed_in_root
   end

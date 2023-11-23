@@ -12,8 +12,9 @@
   <% end %>
 
   <div class="my-5">
-    <%= form.label :job_id %>
-    <%= @job.title %>
+    <%= link_to job_path(@job) do %>
+      <%= @job.title %>
+    <% end %>
   </div>
 
   <div class="my-5">
