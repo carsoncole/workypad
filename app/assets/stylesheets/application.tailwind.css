@@ -10,6 +10,14 @@
   p {
     @apply dark:text-white;
   }
+
+  .card {
+    @apply border rounded-lg p-4 sm:w-max shadow-lg bg-white;
+  }
+  .button {
+    @apply tracking-tight rounded-lg align-middle p-1 bg-gray-100 font-medium text-sm leading-5 max-h-max;
+  }
+
 }
 
 /*

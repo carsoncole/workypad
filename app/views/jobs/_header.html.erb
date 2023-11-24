@@ -1,0 +1,23 @@
+<div class="grid grid-cols-2 h-8 gap-2 content-stretch border-b mb-6 font-bold text-sm uppercase">
+  <div id="status" class= 'align-middle'><%= job.status.capitalize %></div>
+  <% if action_name == 'index' && controller_name == 'jobs' %>
+    <div class='text-right inline-block'>
+      <%= button_to job_path(job, up: true), method: :patch, data: { 'turbo-method': :patch }, form_class: 'inline-block text-gray-400 hover:text-gray-800 dark:hover:text-gray-800' do %>
+        <svg fill="none" stroke="currentColor" stroke-width="1.5" class="w-6 h-6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75 12 3m0 0 3.75 3.75M12 3v18"/></svg>
+      <%- end %>
+      <%= button_to job_path(job, down: true), method: :patch, data: { 'turbo-method': :patch }, form_class: 'inline-block text-gray-400 hover:text-gray-800 dark:hover:text-gray-800' do %>
+        <svg fill="none" stroke="currentColor" stroke-width="1.5" class="w-6 h-6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25 12 21m0 0-3.75-3.75M12 21V3"/></svg>
+      <%- end %>
+    </div>
+  <% end %>
+</div>
+
+<div class='h-24'>
+  <div class="tracking-tight font-medium">
+    <%= job.entity %>
+  </div>
+
+  <div class="text-xl md:text-2xl font-medium mb-5 tracking-tight">
+    <%= truncate(job.title, length: 40) %>
+  </div>
+</div>

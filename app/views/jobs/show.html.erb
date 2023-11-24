@@ -1,7 +1,5 @@
-<div class="mx-auto w-full justified-center flex">
-  <div class="mx-auto">
-    <%= render @job %>
+<div class="mx-auto flex flex-col items-center">
+  <%= render 'job_details', job: @job %>
 
-    <%= link_to "Back to jobs", jobs_path, class: "mt-5 ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-  </div>
+  <%= link_to "Back to jobs", jobs_path, class: "mt-5 max-w-fit ml-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
 </div>

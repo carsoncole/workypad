@@ -4,11 +4,16 @@ class JobsController < ApplicationController
 
   # GET /jobs or /jobs.json
   def index
-    @jobs = current_user.jobs.not_archived.order(order: :desc)
+    if params[:archived]
+      @jobs = current_user.jobs.archived.order(order: :desc)
+    else
+      @jobs = current_user.jobs.not_archived.order(order: :desc)
+    end
   end
 
   # GET /jobs/1 or /jobs/1.json
   def show
+    @notes = @job.notes.limit(3)
   end
 
   # GET /jobs/new
@@ -20,7 +25,6 @@ class JobsController < ApplicationController
   def edit
   end
 
-  # POST /jobs or /jobs.json
   def create
     @job = current_user.jobs.new(job_params)
 
@@ -35,7 +39,6 @@ class JobsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /jobs/1 or /jobs/1.json
   def update
     if params[:up]
       @job.reorder_up!
@@ -43,11 +46,13 @@ class JobsController < ApplicationController
     elsif params[:down]
       @job.reorder_down!
       redirect_to jobs_url
-    elsif params[:archive]
-      @job.update(status: 'archived', order: 0)
-      redirect_to job_url(@job), notice: "Job was successfully archived."
     elsif @job.update(job_params)
-      redirect_to jobs_url, notice: "Job was successfully updated."
+
+      if @job.status_previously_was == 'archived'
+        redirect_to jobs_url(archived: true)
+      else
+        redirect_to jobs_url
+      end
     else
       render :edit, status: :unprocessable_entity
     end
