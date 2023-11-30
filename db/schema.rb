@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_23_053315) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_30_193400) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,6 +29,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_23_053315) do
     t.string "primary_contact_name"
     t.string "primary_contact_email"
     t.string "primary_contact_phone"
+    t.integer "mode"
     t.index ["user_id", "order"], name: "index_jobs_on_user_id_and_order"
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end

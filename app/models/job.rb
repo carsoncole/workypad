@@ -1,5 +1,6 @@
 class Job < ApplicationRecord
   enum status: { research: 0, applied: 1, interview: 2, test: 3, offer: 4, archived: 5 }
+  enum mode: { office: 1, hybrid: 2, remote: 3, other: 9 }
 
   belongs_to :user
   belongs_to :source, optional: true
