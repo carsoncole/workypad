@@ -1,5 +1,12 @@
-<div class="grid grid-cols-2 h-8 gap-2 content-stretch border-b mb-6 font-bold text-sm uppercase">
-  <div id="status" class= 'align-middle'><%= job.status.capitalize %></div>
+<div class="grid grid-cols-2 h-8 gap-2 content-stretch border-b h-10 mb-6 font-bold text-sm uppercase">
+  <div class="align-middle">
+    <div class='align-middle inline-block text-lg align-middle'>
+      <%= job.status.capitalize %>
+    </div>
+    <div class="font-bold text-xl bg-gray-100 ml-1 py-1 px-2 rounded-lg inline-block align-middle">
+      <%= (Time.now.to_date - job.created_at.to_date).to_i %>
+    </div>
+  </div>
   <% if action_name == 'index' && controller_name == 'jobs' %>
     <div class='text-right inline-block'>
       <%= button_to job_path(job, up: true), method: :patch, data: { 'turbo-method': :patch }, form_class: 'inline-block text-gray-400 hover:text-gray-800 dark:hover:text-gray-800' do %>

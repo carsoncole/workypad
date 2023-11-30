@@ -55,14 +55,23 @@
   </div>
 
 
-  <hr class='mb-5' />
-  <%= link_to 'New note', new_job_note_path(job), class: 'button block mb-5 max-w-max' %>
+  <div class='mb-10'>
+    <hr class='mb-5' />
+    <%= link_to 'New note', new_job_note_path(job), class: 'button block mb-5 max-w-max' %>
 
-  <%= render @notes %>
+    <%= render @notes %>
 
-  <%- if @notes.count > 3 %>
-    <%= link_to 'More notes', job_notes_path(job), class: 'button' %>
-  <% end %>
+    <%- if @notes.count > 3 %>
+      <%= link_to 'More notes', job_notes_path(job), class: 'button' %>
+    <% end %>
+  </div>
+
+    <% if job.description.present? %>
+      <div class='mb-10'>
+        <hr class='mb-5' />
+        <%= job.description %>
+    </div>
+    <% end %>
 
 
   <div class='mt-3 flex justify-end'>
