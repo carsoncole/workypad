@@ -71,22 +71,22 @@
   </div>
 
 
-  <div class='mb-10'>
-    <hr class='mb-5' />
-    <%= link_to 'New note', new_job_note_path(job), class: 'button block mb-5 max-w-max' %>
+    <div class='mb-12 border-t-2 pt-3'>
+      <h2 class="font-bold mb-5">Notes</h2>
+      <%= link_to 'New note', new_job_note_path(job), class: 'button block mb-5 max-w-max' %>
 
-    <%= render @notes %>
+      <%= render @notes %>
 
-    <%- if @notes.count > 3 %>
-      <%= link_to 'More notes', job_notes_path(job), class: 'button' %>
-    <% end %>
-  </div>
+      <%- if @notes.count > 3 %>
+        <%= link_to 'More notes', job_notes_path(job), class: 'button' %>
+      <% end %>
+    </div>
 
     <% if job.description.present? %>
-      <div class='mb-10'>
-        <hr class='mb-5' />
+      <div class='mb-12 border-t-2 pt-3'>
+        <h2 class="font-bold mb-5">Description</h2>
         <%= job.description %>
-    </div>
+      </div>
     <% end %>
 
 

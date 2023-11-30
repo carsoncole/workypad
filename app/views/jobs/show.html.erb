@@ -1,5 +1,8 @@
-<div class="mx-auto flex flex-col items-center">
+<div class="flex justify-center">
+  <%= link_to jobs_path class: "" do %>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2.5" class="w-7 h-7 align-top mr-5 mt-5 hidden lg:block" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18"/></svg>
+  <% end %>
   <%= render 'job_details', job: @job %>
-
-  <%= link_to "Back to jobs", jobs_path, class: "mt-5 max-w-fit ml-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
 </div>
+  <%= link_to "Back to jobs", jobs_path, class: "mt-5 max-w-fit ml-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+
