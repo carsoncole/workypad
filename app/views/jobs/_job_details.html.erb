@@ -1,7 +1,6 @@
 <div id="<%= dom_id job %>" class='card w-full md:w-86 lg:w-1/2'>
   <%= render 'header', job: job %>
 
-
   <% if action_name == 'index' && controller_name == 'jobs' %>
     <%= link_to job_notes_path(job), class: "h-32 bg-gray-100 text-sm py-3 px-2 tracking-tight block text-truncate overflow-hidden" do %>
       <%- if job.notes.last.present? %>

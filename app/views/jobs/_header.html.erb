@@ -4,7 +4,7 @@
       <%= job.status.capitalize %>
     </div>
     <div class="font-bold text-xl bg-gray-100 ml-1 py-1 px-2 rounded-lg inline-block align-middle">
-      <%= (Time.now.to_date - job.created_at.to_date).to_i %>
+      <%= days_since_status_change(job) %>
     </div>
   </div>
   <% if action_name == 'index' && controller_name == 'jobs' %>
@@ -25,6 +25,6 @@
   </div>
 
   <div class="text-xl md:text-2xl font-medium mb-5 tracking-tight">
-    <%= truncate(job.title, length: 40) %>
+    <%= link_to truncate(job.title, length: 40), job_path(job), class: "hover:text-gray-500 text-gray-800" %>
   </div>
 </div>
