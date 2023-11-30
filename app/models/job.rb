@@ -9,7 +9,7 @@ class Job < ApplicationRecord
   validates :entity, :title, :status, presence: true
 
   before_create :add_initial_order!
-  before_update :update_status_updated_at!, if: ->(obj){ obj.will_save_change_to_status? }
+  before_save :update_status_updated_at!, if: ->(obj){ obj.will_save_change_to_status? }
 
   def add_initial_order!
     self.order = (self.user.jobs.order(:order)&.last&.order || 0) + 1
@@ -32,7 +32,7 @@ class Job < ApplicationRecord
   private
 
   def update_status_updated_at!
-    self.status_updated_at = Time.current
+    self.status_updated_at = Time.now
   end
 
 end

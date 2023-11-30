@@ -18,6 +18,18 @@
 
   <div class="flex flex-col-2 gap-5 mb-10">
     <div class="w-2/3">
+      <% if job.url.present? %>
+        <div class='mb-5'>
+          <h2 class="">
+            <%= link_to job.url, target: '_blank', class: "" do %>
+                  <div class='inline-block'>Listing</div>
+                  <div class='inline-block'>
+                    <svg fill="none" stroke="currentColor" stroke-width="1.5" class="w-3 h-3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"/></svg>
+                  </div>
+            <% end %>
+          </h2>
+        </div>
+      <% end %>
       <% if job.primary_contact_name.present? %>
         <div class='mb-2'>
           <h2 class="font-light text-sm">Primary contact name</h2>
