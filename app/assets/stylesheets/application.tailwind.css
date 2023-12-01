@@ -18,6 +18,10 @@
     @apply tracking-tight rounded-lg align-middle p-1 bg-gray-100 font-medium text-sm leading-5 max-h-max;
   }
 
+  .badge {
+    @apply tracking-tight font-medium text-xs text-black px-2 bg-gray-300 inline-block rounded;
+  }
+
 }
 
 /*

@@ -18,6 +18,16 @@
         <%= form.text_field :entity, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
       </div>
 
+      <div class="my-5 md:flex md:items-center">
+        <div class="md:w-1/3"></div>
+        <label class="md:w-2/3 block text-gray-500 font-bold">
+          <%= form.check_box :is_agency, class: "rounded mr-2 leading-tight" %>
+          <span class="text-sm">
+            Agency
+          </span>
+        </label>
+      </div>
+
       <div class="my-5">
         <%= form.label :title, class: "font-bold" %>
         <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>

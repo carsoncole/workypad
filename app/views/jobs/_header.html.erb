@@ -22,6 +22,11 @@
 <div class='h-36'>
   <div class="tracking-tight mb-2 text-gray-600">
     <%= job.entity %>
+    <% if job.is_agency? %>
+      <div class="badge">
+        Agency
+      </div>
+    <% end %>
   </div>
 
   <div class="text-xl md:text-xl font-bold mb-5 tracking-tight">
