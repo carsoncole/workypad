@@ -46,6 +46,9 @@ class JobsController < ApplicationController
     elsif params[:down]
       @job.reorder_down!
       redirect_to jobs_url
+    elsif params[:job][:position]
+      @job.update order_position: params[:job][:position].to_i - 1
+      redirect_to jobs_url
     elsif @job.update(job_params)
 
       if @job.status_previously_was == 'archived'
@@ -76,6 +79,6 @@ class JobsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def job_params
-      params.require(:job).permit(:entity, :title, :url, :description, :status, :order, :source_id, :salary, :primary_contact_email, :primary_contact_phone, :primary_contact_name, :mode, :is_agency)
+      params.require(:job).permit(:entity, :title, :url, :description, :status, :order, :source_id, :salary, :primary_contact_email, :primary_contact_phone, :primary_contact_name, :mode, :is_agency, :position)
     end
 end

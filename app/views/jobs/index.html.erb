@@ -11,8 +11,9 @@
       <% end %>
     </div>
 
-    <div id="jobs" class="flex flex-wrap gap-4 justify-center">
+    <div id="jobs" class="flex flex-wrap gap-4 justify-center" data-controller="sortable" data-sortable-animation-value="150" data-sortable-resource-name-value="job">
       <%= render @jobs %>
     </div>
   <%- end %>
 </div>
+
