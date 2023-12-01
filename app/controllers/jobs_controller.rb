@@ -7,7 +7,7 @@ class JobsController < ApplicationController
     if params[:archived]
       @jobs = current_user.jobs.archived.order(order: :desc)
     else
-      @jobs = current_user.jobs.not_archived.order(order: :desc)
+      @jobs = current_user.jobs.not_archived.rank(:order).all
     end
   end
 

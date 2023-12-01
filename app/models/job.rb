@@ -20,12 +20,12 @@ class Job < ApplicationRecord
   end
 
   def reorder_up!
-    self.update order_position: :down
+    self.update order_position: :up
     self
   end
 
   def reorder_down!
-    self.update order_position: :up
+    self.update order_position: :down
     self
   end
 
