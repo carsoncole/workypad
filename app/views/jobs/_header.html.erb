@@ -19,12 +19,12 @@
   <% end %>
 </div>
 
-<div class='h-24'>
-  <div class="tracking-tight font-medium">
+<div class='h-36'>
+  <div class="tracking-tight mb-2 text-gray-600">
     <%= job.entity %>
   </div>
 
-  <div class="text-xl md:text-2xl font-medium mb-5 tracking-tight">
+  <div class="text-xl md:text-xl font-bold mb-5 tracking-tight">
     <%= link_to truncate(job.title, length: 40), job_path(job), class: "hover:text-gray-500 text-gray-800" %>
   </div>
 </div>
