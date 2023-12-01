@@ -12,7 +12,7 @@
   }
 
   .card {
-    @apply border rounded-lg p-7 sm:w-max shadow-lg bg-white;
+    @apply border border-gray-300 rounded p-7 sm:w-max shadow bg-white;
   }
   .button {
     @apply tracking-tight rounded-lg align-middle p-1 bg-gray-100 font-medium text-sm leading-5 max-h-max;

@@ -217,6 +217,8 @@ GEM
       thor (~> 1.0, >= 1.2.2)
       zeitwerk (~> 2.6)
     rake (13.1.0)
+    ranked-model (0.4.9)
+      activerecord (>= 5.2)
     rdoc (6.6.0)
       psych (>= 4.0.0)
     regexp_parser (2.8.2)
@@ -284,6 +286,7 @@ DEPENDENCIES
   pg (~> 1.1)
   puma (>= 5.0)
   rails (~> 7.1.2)
+  ranked-model
   selenium-webdriver
   sprockets-rails
   stimulus-rails
