@@ -16,6 +16,7 @@ class Job < ApplicationRecord
 
   # before_create :add_initial_order!
   before_save :update_status_updated_at!, if: ->(obj){ obj.will_save_change_to_status? }
+  before_save :update_applied_on!, if: ->(obj){ obj.status_changed?(to: 'applied') }
 
   def add_initial_order!
     self.order = (self.user.jobs.order(:order)&.last&.order || 0) + 1
@@ -35,6 +36,10 @@ class Job < ApplicationRecord
 
   def update_status_updated_at!
     self.status_updated_at = Time.now
+  end
+
+  def update_applied_on!
+    self.applied_on = Date.today
   end
 
 end

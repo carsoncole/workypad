@@ -12,9 +12,11 @@
   <% end %>
 
   <div class="my-5">
-    <%= link_to job_path(@job) do %>
-      <%= @job.title %>
+    <%= link_to jobs_path do %>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2.5" class="w-7 h-7 mr-1 inline-block" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18"/></svg>
+      <span> Back to job</span>
     <% end %>
+
   </div>
 
   <div class="my-5">

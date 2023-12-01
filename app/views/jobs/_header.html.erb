@@ -1,35 +1,36 @@
-<div class="flex justify-between border-b mb-6 font-bold text-sm uppercase">
-  <div class="align-middle h-10">
-    <div class='inline-block text-gray-500 text-lg align-middle'>
-      <%= job.status.capitalize %>
+<div class="flex justify-between h-12 border-b mb-6 pb-2 font-bold text-sm uppercase items-center">
+  <% if action_name == 'index' %>
+    <div class='text-gray-800 text-xl tracking-tight truncate w-60'>
+      <%= job.entity %>
     </div>
-    <div class="font-bold text-xl bg-gray-100 ml-1 py-1 px-2 rounded-lg inline-block align-middle">
+  <% else %>
+    <div class='text-gray-800 text-xl tracking-tight truncate'>
+      <%= job.entity %>
+    </div>
+  <% end %>
+
+  <% if days_since_status_change(job) > 7 %>
+    <div class="font-bold text-xl bg-red-700 text-white ml-1 py-1 px-2 rounded-lg align-middle">
       <%= days_since_status_change(job) %>
     </div>
-  </div>
-  <% if action_name == 'index' && controller_name == 'jobs' %>
-    <div class='text-right inline-block'>
-      <%= button_to job_path(job, up: true), method: :patch, data: { 'turbo-method': :patch }, form_class: 'inline-block text-gray-400 hover:text-gray-800 dark:hover:text-gray-800' do %>
-        <svg fill="none" stroke="currentColor" stroke-width="1.5" class="w-6 h-6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75 12 3m0 0 3.75 3.75M12 3v18"/></svg>
-      <%- end %>
-      <%= button_to job_path(job, down: true), method: :patch, data: { 'turbo-method': :patch }, form_class: 'inline-block text-gray-400 hover:text-gray-800 dark:hover:text-gray-800' do %>
-        <svg fill="none" stroke="currentColor" stroke-width="1.5" class="w-6 h-6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25 12 21m0 0-3.75-3.75M12 21V3"/></svg>
-      <%- end %>
+  <% else %>
+    <div class="font-bold text-xl bg-gray-100 ml-1 py-1 px-2 rounded-lg align-middle">
+      <%= days_since_status_change(job) %>
     </div>
   <% end %>
 </div>
 
-<div class='h-36'>
-  <div class="tracking-tight mb-2 text-gray-600">
-    <%= job.entity %>
-    <% if job.is_agency? %>
-      <div class="badge">
-        Agency
-      </div>
-    <% end %>
+<div class='h-24 flex flex-col'>
+
+  <div class="text-lg md:text-lg font-bold mb-5 tracking-tight text-ellipsis">
+    <%= link_to job.title, job_path(job), class: "hover:text-gray-500 text-gray-800" %>
   </div>
 
-  <div class="text-xl md:text-xl font-bold mb-5 tracking-tight">
-    <%= link_to truncate(job.title, length: 60), job_path(job), class: "hover:text-gray-500 text-gray-800" %>
-  </div>
+  <% if job.applied_on.present? %>
+    <div class="text-sm badge mb-5 max-w-max">
+      Applied:
+      <%= job.applied_on.strftime('%D') %>
+    </div>
+  <% end %>
+
 </div>

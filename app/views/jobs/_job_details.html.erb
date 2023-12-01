@@ -1,4 +1,4 @@
-<div id="<%= dom_id job %>" class='card w-full md:w-86 lg:w-1/2'>
+<div id="<%= dom_id job %>" class='card w-full md:w-86 lg:w-1/2 p-7'>
   <%= render 'header', job: job %>
 
   <% if action_name == 'index' && controller_name == 'jobs' %>
@@ -51,6 +51,10 @@
     </div>
 
     <div>
+      <div class='mb-2'>
+        <h2 class="font-light text-sm">Status</h2>
+        <div class="font-bold"><%= job.status&.capitalize %></div>
+      </div>
       <div class='mb-2'>
         <h2 class="font-light text-sm">Mode</h2>
         <div class="font-bold"><%= job.mode&.capitalize %></div>

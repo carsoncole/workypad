@@ -12,14 +12,18 @@
   }
 
   .card {
-    @apply border border-gray-300 rounded p-7 sm:w-max shadow bg-white;
+    @apply border border-gray-500 rounded sm:w-max shadow bg-white;
   }
   .button {
-    @apply tracking-tight rounded-lg align-middle p-1 bg-gray-100 font-medium text-sm leading-5 max-h-max;
+    @apply tracking-tight rounded-lg align-middle py-2 px-3 bg-gray-100 font-medium text-sm leading-5 max-h-max;
+  }
+
+  .button-lg {
+    @apply tracking-tight rounded-lg align-middle py-3 px-5 bg-gray-100 font-medium max-w-fit;
   }
 
   .badge {
-    @apply tracking-tight font-medium text-xs text-black px-2 bg-gray-300 inline-block rounded;
+    @apply tracking-tight font-medium text-xs  bg-gray-100 text-gray-800 px-3 inline-block rounded;
   }
 
 }
