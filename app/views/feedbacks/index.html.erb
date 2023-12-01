@@ -1,0 +1,39 @@
+<div class="container lg:w-2/3">
+
+  <%= link_to jobs_path, class: " align-middle" do %>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2.5" class="w-7 h-7 align-top inline-block" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18"/></svg>
+    Jobs
+  <% end %>
+
+  <h1 class="text-4xl font-medium mt-5 mb-14">
+    Feedback
+  </h1>
+
+
+  <div class="mb-12">
+    <h2 class="text-xl font-bold mb-2">
+      New feedback
+    </h2>
+    <div class="w-full">
+      <%= render "form", feedback: @new_feedback %>
+    </div>
+  </div>
+
+  <hr class="my-8" />
+
+  <div class="w-full">
+    <h2 class="text-xl font-bold mb-6">
+      Feedback you've submitted
+    </div>
+
+    <% if @feedbacks.empty? %>
+      <p>No feedback submitted yet.</p>
+    <% end %>
+
+    <div id="feedbacks" class="min-w-full">
+      <%= render @feedbacks %>
+    </div>
+  </div>
+</div>
+
+

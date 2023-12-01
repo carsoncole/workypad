@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     resources :notes
   end
 
+  resources :feedbacks, only: [:index, :create, :destroy]
+
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
 
