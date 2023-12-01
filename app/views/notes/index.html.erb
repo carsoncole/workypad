@@ -1,8 +1,8 @@
-<div class="w-full">
+<div class="w-full container">
   <p class="mb-6">
-    <%= link_to root_path, class: '' do %>
+    <%= link_to @job, class: '' do %>
       <svg fill="none" stroke="currentColor" stroke-width="1.5" class="w-6 h-6 inline-block" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18"/></svg>
-      Back to Jobs
+      Back to Job
     <% end %>
   </p>
 
@@ -14,9 +14,6 @@
       <div class="flex justify-between dark:text-white md:items-center mb-10">
         <h1 class="font-bold text-4xl">Notes</h1>
         <%= link_to "New note", new_job_note_path(@job), class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
-      </div>
-      <div class="mb-5">
-        <%= link_to @job.title, job_path(@job) %>
       </div>
 
       <%= render partial: @notes, spacer_template: "notes_spacer" %>
