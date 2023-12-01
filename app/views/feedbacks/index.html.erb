@@ -26,7 +26,7 @@
       Feedback you've submitted
     </div>
 
-    <% if @feedbacks.empty? %>
+    <%- if @feedbacks.all.empty? %>
       <p>No feedback submitted yet.</p>
     <% end %>
 

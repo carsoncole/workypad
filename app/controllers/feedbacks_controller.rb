@@ -13,7 +13,7 @@ class FeedbacksController < ApplicationController
 
     respond_to do |format|
       if @feedback.save
-        format.html { redirect_to feedbacks_path, notice: "Feedback was successfully created." }
+        format.html { redirect_to feedbacks_path}
         format.json { render :show, status: :created, location: @feedback }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -27,7 +27,7 @@ class FeedbacksController < ApplicationController
     @feedback.destroy!
 
     respond_to do |format|
-      format.html { redirect_to feedbacks_url, notice: "Feedback was successfully destroyed." }
+      format.html { redirect_to feedbacks_url }
       format.json { head :no_content }
     end
   end

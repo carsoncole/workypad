@@ -1,5 +1,5 @@
 <% if feedback.persisted? %>
-  <div id="<%= dom_id feedback %>" class="mb-6 lg:mb-2 border-b pb-5 lg:pb-0 lg:border-none">
+  <div id="<%= dom_id feedback %>" class="mb-6 border-b pb-5 lg:pb-0 lg:border-none">
     <div class="md:flex items-center">
       <p class="w-32 font-bold uppercase">
         <%= feedback.status %>
@@ -7,9 +7,20 @@
       <p class="w-32 font-medim uppercase mb-3 lg:mb-0">
         <%= feedback.created_at.strftime("%b-%d-%y") %>
       </p>
-      <p class="flex-1 bg-gray-100 py-1 px-3">
-        <%= feedback.content %>
-      </p>
+      <div class="flex-1">
+        <div class="bg-gray-100 py-1 px-3 mb-2">
+          <%= feedback.content %>
+        </div>
+        <% if feedback.response.present? %>
+          <div class="bg-gray-100 py-1 px-3">
+            <div class="font-medium inline-block">
+              Response:
+            </div>
+            <%= feedback.response %>
+          </div>
+        <% end %>
+        </div>
+      </div>
     </div>
   </div>
 <% end %>
