@@ -15,6 +15,7 @@
     <%= render 'shared/header' %>
     <%= render 'shared/flash' if flash.present? %>
     <main class="container mx-auto mt-5 px-4">
+      <%= render 'shared/nav' %>
       <%= yield %>
     <%= render 'shared/footer' if signed_in? %>
     </main>
