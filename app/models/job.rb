@@ -1,3 +1,4 @@
+#TODO change integer ID to UUID
 class Job < ApplicationRecord
   include RankedModel
   ranks :order,
