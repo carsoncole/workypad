@@ -1,0 +1,11 @@
+<div class="flex justify-center gap-5 mb-5">
+  <% if controller_name == 'jobs' && action_name != 'new' %>
+    <%= link_to "New job", new_job_path, class: "button-lg" %>
+  <% end %>
+
+  <% if controller_name == 'jobs' && action_name == 'index' %>
+    <%= link_to "#{ params[:archived].present? ? 'Jobs' : 'Archive' }", params[:archived].present? ? jobs_path : jobs_path(archived: 'true'), class: 'button-lg'  %>
+  <% else %>
+    <%= link_to "Jobs", jobs_path, class: "button-lg" %>
+  <% end %>
+</div>
