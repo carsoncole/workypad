@@ -1,7 +1,6 @@
 FactoryBot.define do
   factory :feedback do
-    user { nil }
+    user
     content { "MyText" }
-    status { "MyString" }
   end
 end
