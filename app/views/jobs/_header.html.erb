@@ -30,8 +30,21 @@
 
 <div class='flex flex-col'>
 
-  <div class="text-lg md:text-lg font-bold tracking-tight text-ellipsis">
+  <div class="text-lg md:text-lg font-bold tracking-tight text-ellipsis mb-1">
     <%= link_to job.title, job_path(job), class: "hover:text-gray-500 text-gray-800" %>
+  </div>
+
+  <div class="flex">
+    <% if job.mode %>
+      <div class="bg-gray-200 max-w-max px-2 py-1 text-sm">
+        <%= job.mode.humanize.capitalize %>
+      </div>
+    <% end %>
+    <% if !job.not_set? %>
+      <div class="bg-gray-700 text-white max-w-max px-2 py-1 text-sm">
+        <%= job.arrangement.humanize.capitalize %>
+      </div>
+    <% end %>
   </div>
 
 

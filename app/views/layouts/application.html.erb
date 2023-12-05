@@ -1,21 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <title>WorkyPad</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description" content="Effortlessly monitor your job prospects with WorkyPad, a user-friendly web pad. Stay organized by tracking the progress of each job, from initial research to interviews, and manage essential details like contacts and the original job listing. Say goodbye to last-minute scrambles – always be prepared when you receive a call, knowing exactly where you stand in your job search.">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <link rel="canonical" href="https://workypad.com" + <%= request.path %>>
-    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-
-    <!-- Facebook meta -->
-    <meta property='og:site_name' content='WorkyPad'>
-    <meta property='og:description' content="Effortlessly monitor your job prospects with WorkyPad, a user-friendly web pad. Stay organized by tracking the progress of each job, from initial research to interviews, and manage essential details like contacts and the original job listing. Say goodbye to last-minute scrambles – always be prepared when you receive a call, knowing exactly where you stand in your job search." >
-
+    <%= render "shared/head" %>
   </head>
 
   <body class="dark:bg-gray-900 pb-5">
@@ -26,6 +12,5 @@
       <%= yield %>
     <%= render 'shared/footer' if signed_in? %>
     </main>
-
   </body>
 </html>
