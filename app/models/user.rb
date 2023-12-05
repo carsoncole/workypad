@@ -1,3 +1,4 @@
+#TODO remove forgot password
 class User < ApplicationRecord
   include Clearance::User
 

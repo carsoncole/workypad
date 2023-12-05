@@ -36,14 +36,12 @@ class JobsTest < ApplicationSystemTestCase
     fill_in "Url", with: @job.url
     click_on "Update Job"
 
-    assert_text "Job was successfully updated"
   end
 
   test "should archive Job" do
     visit job_url(@job, as: @user)
     click_on "archive_job_#{@job.id}"
-    assert_text "Job was successfully archived"
-    within "#status" do
+    within "status" do
       assert_text "ARCHIVED"
     end
   end

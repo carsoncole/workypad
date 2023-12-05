@@ -39,13 +39,18 @@
       </div>
 
       <div class="my-5">
-        <%= form.label :description, class: "font-bold" %>
-        <%= form.text_area :description, rows: 6, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:text-gray-900" %>
+        <%= form.label :mode, class: "font-bold" %>
+        <%= form.select :mode, options_for_select(Job.modes.map{|k,v| [k.humanize.capitalize, k] }, @job.mode), {}, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:text-gray-900" %>
       </div>
 
       <div class="my-5">
-        <%= form.label :mode, class: "font-bold" %>
-        <%= form.select :mode, options_for_select(Job.modes.map{|k,v| [k.humanize.capitalize, k] }, @job.mode), {}, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:text-gray-900" %>
+        <%= form.label :arrangement, class: "font-bold" %>
+        <%= form.select :arrangement, options_for_select(Job.arrangements.map{|k,v| [k.humanize.capitalize, k] }, @job.arrangement), {}, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:text-gray-900" %>
+      </div>
+
+      <div class="my-5">
+        <%= form.label :description, class: "font-bold" %>
+        <%= form.text_area :description, rows: 6, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:text-gray-900" %>
       </div>
 
       <div class="my-5">

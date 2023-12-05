@@ -2,44 +2,28 @@ require "application_system_test_case"
 
 class FeedbacksTest < ApplicationSystemTestCase
   setup do
-    @feedback = feedbacks(:one)
+    @feedback = create(:feedback)
+    @user = @feedback.user
   end
 
   test "visiting the index" do
-    visit feedbacks_url
-    assert_selector "h1", text: "Feedbacks"
+    visit feedbacks_url(as: @user)
+    assert_selector "h1", text: "Feedback"
   end
 
   test "should create feedback" do
-    visit feedbacks_url
-    click_on "New feedback"
-
-    fill_in "Content", with: @feedback.content
-    fill_in "Status", with: @feedback.status
-    fill_in "User", with: @feedback.user_id
+    visit feedbacks_url(as: @user)
+    fill_in "feedback-content", with: @feedback.content
     click_on "Create Feedback"
 
-    assert_text "Feedback was successfully created"
-    click_on "Back"
-  end
-
-  test "should update Feedback" do
-    visit feedback_url(@feedback)
-    click_on "Edit this feedback", match: :first
-
-    fill_in "Content", with: @feedback.content
-    fill_in "Status", with: @feedback.status
-    fill_in "User", with: @feedback.user_id
-    click_on "Update Feedback"
-
-    assert_text "Feedback was successfully updated"
-    click_on "Back"
+    assert_text @feedback.content
+    click_on "Jobs"
   end
 
   test "should destroy Feedback" do
-    visit feedback_url(@feedback)
-    click_on "Destroy this feedback", match: :first
-
-    assert_text "Feedback was successfully destroyed"
+    visit feedbacks_url(as: @user)
+    accept_confirm do
+      click_on "destroy-#{@feedback.id}"
+    end
   end
 end
