@@ -17,7 +17,7 @@ class Job < ApplicationRecord
   validates :entity, :title, :status, presence: true
 
   # before_create :add_initial_order!
-  before_save :update_status_updated_at!, if: ->(obj){ obj.will_save_change_to_status? }
+  before_save :update_status_updated_at!, if: ->(obj){ !obj.persisted? || obj.will_save_change_to_status? }
   before_save :update_applied_on!, if: ->(obj){ obj.status_changed?(to: 'applied') }
 
   def add_initial_order!

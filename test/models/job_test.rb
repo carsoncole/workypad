@@ -23,11 +23,19 @@ class JobTest < ActiveSupport::TestCase
     assert_equal Job.rank(:order).fourth, list[2]
   end
 
-  test "date applied attribute setting" do
+  test "applied on" do
     job = create(:job, user: @user)
     assert_nil job.applied_on
 
     job.applied!
     assert_equal Date.today, job.reload.applied_on
+  end
+
+  test 'status updated at' do
+    job = create(:job, user: @user)
+    assert_not_nil job.status_updated_at
+
+    job.test!
+    assert job.saved_change_to_status_updated_at?
   end
 end
