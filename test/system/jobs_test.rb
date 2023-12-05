@@ -40,9 +40,10 @@ class JobsTest < ApplicationSystemTestCase
 
   test "should archive Job" do
     visit job_url(@job, as: @user)
-    click_on "archive_job_#{@job.id}"
-    within "status" do
-      assert_text "ARCHIVED"
+
+    assert_difference('Job.archived.count') do
+      click_on "archive_job_#{@job.id}"
+      sleep 1
     end
   end
 
