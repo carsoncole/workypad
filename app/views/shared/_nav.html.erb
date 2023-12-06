@@ -1,6 +1,6 @@
 <% if controller_name == 'jobs' || controller_name == 'notes' || controller_name == 'feedbacks' %>
 
-  <div class="flex justify-center gap-5 mb-5">
+  <div class="flex justify-center flex-wrap gap-5 mb-5">
     <% if controller_name == 'jobs' && action_name != 'new' %>
       <%= link_to "New job", new_job_path, class: "button-lg" %>
     <% end %>
