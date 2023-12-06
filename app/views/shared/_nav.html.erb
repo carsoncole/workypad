@@ -5,10 +5,14 @@
       <%= link_to "New job", new_job_path, class: "button-lg" %>
     <% end %>
 
-    <% if controller_name == 'jobs' && action_name == 'index' %>
+    <% if controller_name == 'jobs' && action_name == 'index' && !params[:query] %>
       <%= link_to "#{ params[:archived].present? ? 'Jobs' : 'Archive' }", params[:archived].present? ? jobs_path : jobs_path(archived: 'true'), class: 'button-lg'  %>
     <% else %>
       <%= link_to "Jobs", jobs_path, class: "button-lg" %>
+    <% end %>
+
+    <%= form_with(url: jobs_path, method: :get, data: {turbo_frame: "jobs"}) do |form| %>
+      <%= form.text_field :query, placeholder: 'Search', class: 'rounded-lg py-3 px-5 bg-gray-100 font-medium max-w-fit border-none', value: params[:query], id: 'search' %>
     <% end %>
   </div>
 <% end %>

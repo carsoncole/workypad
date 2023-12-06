@@ -55,4 +55,19 @@ class JobsTest < ApplicationSystemTestCase
     end
     assert_text "Job was successfully destroyed"
   end
+
+  test "search" do
+    job_2 = create(:job, user: @user, title: 'Tarmac agent')
+    job_3 = create(:job, user: @user, entity: 'Double agent')
+    visit jobs_url(as: @user)
+    fill_in "search", with: "tarmac\n"
+    assert_text "Tarmac agent"
+    assert_no_text "Double agent"
+    assert_no_text @job.title
+
+    fill_in "search", with: "agent\n"
+    assert_text "Tarmac agent"
+    assert_text "DOUBLE AGENT"
+    assert_no_text @job.title
+  end
 end

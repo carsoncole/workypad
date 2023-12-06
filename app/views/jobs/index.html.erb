@@ -1,5 +1,5 @@
 <div class="">
-  <%- if @jobs.empty? && !params[:archived] %>
+  <%- if @jobs.empty? && !params[:archived] && !params[:query] %>
     <%= render 'welcome'  %>
   <%- else %>
 

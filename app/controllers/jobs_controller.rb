@@ -4,7 +4,10 @@ class JobsController < ApplicationController
 
   # GET /jobs or /jobs.json
   def index
-    if params[:archived]
+
+    if params[:query].present?
+      @jobs = Job.where("entity ILIKE ? OR title ILIKE ?", "%#{params[:query]}%", "%#{params[:query]}%")
+    elsif params[:archived]
       @jobs = current_user.jobs.archived.order(order: :desc)
     else
       @jobs = current_user.jobs.not_archived.rank(:order).all

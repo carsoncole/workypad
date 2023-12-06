@@ -3,6 +3,8 @@
 
   <%= render "form", job: @job %>
 
-  <%= link_to "Show this job", @job, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-  <%= link_to "Back to jobs", jobs_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <div class="flex">
+    <%= link_to "Show this job", @job, class: "button-lg" %>
+    <%= link_to "Back to jobs", jobs_path, class: "button-lg ml-2" %>
+  </div>
 </div>
