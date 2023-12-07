@@ -32,9 +32,9 @@
         <div class='mt-3 flex justify-between'>
           <div class="flex gap-1">
             <% if action_name != "show" %>
-              <%= link_to "Notes", job_notes_path(job), class: "button" %>
+              <%= link_to "Notes", job_notes_path(job), class: "button", data: { turbo_frame: "_top" } %>
               <% if action_name == 'index' %>
-                <%= link_to "More", job, class: "button" %>
+                <%= link_to "More", job, class: "button", data: { turbo_frame: "_top" } %>
               <% end %>
 
               <%- if job.url.present? %>
