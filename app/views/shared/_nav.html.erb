@@ -11,9 +11,8 @@
       <%= link_to "Jobs", jobs_path, class: "button-lg" %>
     <% end %>
 
-    <%= form_with(url: jobs_path, method: "GET", data: { turbo_frame: "jobs", turbo_action: "advance"}) do |form| %>
-      <%= form.text_field :query, placeholder: 'Search', class: 'rounded-lg py-3 px-5 bg-gray-100 font-medium max-w-fit border-none', value: params[:query] %>
-      <%#= form.text_field :query, placeholder: 'Search', class: 'rounded-lg py-3 px-5 bg-gray-100 font-medium max-w-fit border-none', value: params[:query], id: 'search', data: { action: "input->search#search"} %>
+    <%= form_with(url: jobs_path, method: "GET", data: { controller: "search", turbo_frame: "jobs"}) do |form| %>
+      <%= form.text_field :query, placeholder: 'Search', class: 'rounded-lg py-3 px-5 bg-gray-100 font-medium max-w-fit border-none', value: params[:query], id: 'search', data: { action: "input->search#search"} %>
     <% end %>
   </div>
 <% end %>

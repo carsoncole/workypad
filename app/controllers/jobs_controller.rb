@@ -2,11 +2,18 @@ class JobsController < ApplicationController
   before_action :require_login
   before_action :set_job, only: %i[ show edit update destroy ]
 
-  # GET /jobs or /jobs.json
+  def dashboard
+    @has_jobs = if current_user.jobs.any?
+      true
+    else
+      false
+    end
+  end
+
   def index
     puts turbo_frame_request? ? "* Hotwire *" * 20 : "* HTML *" * 20
     if params[:query].present?
-      @jobs = Job.where("entity ILIKE ? OR title ILIKE ?", "%#{params[:query]}%", "%#{params[:query]}%").order(:order)
+      @jobs = Job.where("entity ILIKE ? OR title ILIKE ? OR description ILIKE ?", "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%").order(:order)
     elsif params[:archived]
       @jobs = current_user.jobs.archived.order(:order)
     else

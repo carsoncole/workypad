@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
   constraints Clearance::Constraints::SignedIn.new do
-    root to: "jobs#index", as: :signed_in_root
-    get 'all_jobs' => 'jobs#all', as: 'all_jobs'
-
+    root to: "jobs#dashboard", as: :signed_in_root
   end
 
   constraints Clearance::Constraints::SignedOut.new do
     root to: "clearance/sessions#new"
   end
+
+  get '/dashboard' => 'jobs#dashboard', as: 'dashboard'
 
   resources :jobs do
     resources :notes
