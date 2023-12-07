@@ -1,0 +1,11 @@
+<div>
+  <%- if !@has_jobs && !params[:archived] && !params[:query] %>
+    <%= render 'welcome'  %>
+  <%- else %>
+    <div id="jobs" class="flex flex-wrap gap-4 justify-center" data-controller="sortable" data-sortable-animation-value="150" data-sortable-resource-name-value="job">
+      <%= turbo_frame_tag "jobs", src: jobs_path do %>
+        Content coming
+      <% end %>
+    </div>
+  <%- end %>
+</div>

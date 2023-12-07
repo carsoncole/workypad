@@ -1,0 +1,5 @@
+<%= turbo_frame_tag "jobs" do %>
+  <div id="jobs" class="flex flex-wrap gap-4 justify-center" data-controller="sortable" data-sortable-animation-value="150" data-sortable-resource-name-value="job">
+    <%= render @jobs %>
+  </div>
+<% end %>
