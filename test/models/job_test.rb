@@ -23,12 +23,12 @@ class JobTest < ActiveSupport::TestCase
     assert_equal Job.rank(:order).fourth, list[2]
   end
 
-  test "applied on" do
+  test "applied at" do
     job = create(:job, user: @user)
-    assert_nil job.applied_on
+    assert_nil job.applied_at
 
     job.applied!
-    assert_equal Date.today, job.reload.applied_on
+    assert_equal Date.today, job.reload.applied_at
   end
 
   test 'status updated at' do
@@ -37,5 +37,13 @@ class JobTest < ActiveSupport::TestCase
 
     job.test!
     assert job.saved_change_to_status_updated_at?
+  end
+
+  test 'archived at' do
+    job = create(:job, user: @user)
+    assert_nil job.archived_at
+
+    job.archived!
+    assert_equal Date.today, job.reload.archived_at
   end
 end

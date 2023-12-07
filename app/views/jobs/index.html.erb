@@ -2,9 +2,10 @@
   <%- if @jobs.empty? && !params[:archived] && !params[:query] %>
     <%= render 'welcome'  %>
   <%- else %>
-
     <div id="jobs" class="flex flex-wrap gap-4 justify-center" data-controller="sortable" data-sortable-animation-value="150" data-sortable-resource-name-value="job">
-      <%= render @jobs %>
+      <%= turbo_frame_tag "jobs" do %>
+        <%= render partial: 'jobs' %>
+      <% end %>
     </div>
   <%- end %>
 </div>

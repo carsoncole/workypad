@@ -4,8 +4,19 @@ class JobsController < ApplicationController
 
   # GET /jobs or /jobs.json
   def index
-
+    puts turbo_frame_request? ? "* Hotwire *" * 20 : "* HTML *" * 20
     if params[:query].present?
+      @jobs = Job.where("entity ILIKE ? OR title ILIKE ?", "%#{params[:query]}%", "%#{params[:query]}%").order(:order)
+    elsif params[:archived]
+      @jobs = current_user.jobs.archived.order(:order)
+    else
+      @jobs = current_user.jobs.not_archived.rank(:order)
+    end
+  end
+
+
+  def all
+   if params[:query].present?
       @jobs = Job.where("entity ILIKE ? OR title ILIKE ?", "%#{params[:query]}%", "%#{params[:query]}%")
     elsif params[:archived]
       @jobs = current_user.jobs.archived.order(order: :desc)

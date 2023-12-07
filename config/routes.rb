@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   constraints Clearance::Constraints::SignedIn.new do
     root to: "jobs#index", as: :signed_in_root
+    get 'all_jobs' => 'jobs#all', as: 'all_jobs'
+
   end
 
   constraints Clearance::Constraints::SignedOut.new do
