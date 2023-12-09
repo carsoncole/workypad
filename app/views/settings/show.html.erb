@@ -1,0 +1,9 @@
+<div class="mx-auto h-60 w-full md:w-1/2 flex flex-col">
+
+  <%= turbo_frame_tag @setting do %>
+    <%= render @setting %>
+
+    <%= link_to "Edit", edit_setting_path(@setting), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium", data: { turbo_frame: "setting_#{@setting.id}" } %>
+  <% end %>
+
+</div>

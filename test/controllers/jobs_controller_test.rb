@@ -46,4 +46,11 @@ class JobsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to jobs_url
   end
+
+  test "should auto archive" do
+    assert_equal 0, Job.archived.count
+    @job.update(status_updated_at: Date.today - @user.setting.days_to_auto_archive - 1.day)
+    get jobs_url(as: @user) # Auto archiving occurs when viewing Index
+    assert_equal 1, Job.archived.all.count
+  end
 end
