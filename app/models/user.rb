@@ -4,6 +4,7 @@ class User < ApplicationRecord
 
   has_one :setting
   has_many :jobs, dependent: :destroy
+  has_many :notes, through: :jobs
   has_many :feedbacks, dependent: :destroy
 
   after_create :create_setting!

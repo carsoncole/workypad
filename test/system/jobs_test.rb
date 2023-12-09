@@ -70,4 +70,18 @@ class JobsTest < ApplicationSystemTestCase
     assert_text "DOUBLE AGENT"
     assert_no_text @job.title
   end
+
+  test "application badge" do
+    visit jobs_url(as: @user)
+    assert_no_text "Congrats! You earned the Application Badge with more than 2 applications today."
+
+    # 3 of applied! and applied notes
+    create_list(:note, 2, job: @job, category: 'applied')
+    @job.applied!
+
+    visit jobs_url(as: @user)
+    assert_text "Congrats! You earned the Application Badge with more than 2 applications today."
+
+
+  end
 end
