@@ -8,10 +8,10 @@ class JobsController < ApplicationController
     else
       false
     end
+    @application_badge = true if current_user.notes.applied.where("notes.created_at > ?", Time.now - 24.hours).count > 2
   end
 
   def index
-    puts turbo_frame_request? ? "* Hotwire *" * 20 : nil
     if params[:query].present?
       @jobs = Job.where("entity ILIKE ? OR title ILIKE ? OR description ILIKE ? OR primary_contact_name ILIKE ?", "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%").order(:order)
     elsif params[:archived]
@@ -19,6 +19,8 @@ class JobsController < ApplicationController
     else
       @jobs = current_user.jobs.not_archived.rank(:order)
     end
+
+    @application_badge = true if current_user.notes.applied.where("notes.created_at > ?", Time.now - 24.hours).count > 2
   end
 
 

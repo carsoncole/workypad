@@ -3,5 +3,6 @@ class User < ApplicationRecord
   include Clearance::User
 
   has_many :jobs, dependent: :destroy
+  has_many :notes, through: :jobs
   has_many :feedbacks, dependent: :destroy
 end
