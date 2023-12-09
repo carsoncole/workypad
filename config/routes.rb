@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   end
 
   constraints Clearance::Constraints::SignedOut.new do
-    root to: "clearance/sessions#new"
+    root to: "public#index"
   end
 
   get '/dashboard' => 'jobs#dashboard', as: 'dashboard'

@@ -1,4 +1,63 @@
-<div>
-  <h1 class="font-bold text-4xl">Public#index</h1>
-  <p>Find me in app/views/public/index.html.erb</p>
+<div class="dark:text-white">
+  <div class="mt-20 mb-8 tracking-tight text-5xl font-medium dark:text-white">
+    Simplified job search tracking
+  </div>
+  <div class="flex justify-center md:justify-start mb-4 items-center align-center">
+    <%= link_to 'Sign in', sign_in_path, class: 'button-lg bg-amber-200 mr-5' %>
+    <%= link_to 'Sign up', sign_up_path, class: 'align-middle' %>
+  </div>
+
+  <div class="italic text-lg font-light max-w-prose p-6 rounded-lg md:ml-10 bg-gray-100 text-center mb-6">
+    "Finding a job these days is no easy task, and I got tired of the messy spreadsheet to track it all. I just wanted a big board of all my prospective jobs with an easy way to see the status of it all. WorkyPad was my solution. - Carson"
+
+  </div>
+
+
+  <div class="text-xl font-medium dark:text-white flex flex-col md:ml-20">
+    <div class="my-5">
+      <div class="my-2 md:w-2/3">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" class="w-10 h-10 inline-block mr-1" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"/></svg>
+        <span>
+          Comprehensive status overview of your job prospects on a single dashboard
+        </span>
+      </div>
+    </div>
+
+    <div class="my-5">
+      <div class="my-2 md:w-2/3">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" class="w-10 h-10 inline-block mr-1" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"/></svg>
+        <span>
+          Effortlessly record details of your interactions with prospective employers, including application submissions, interviews, and calls
+        </span>
+      </div>
+    </div>
+
+    <div class="my-5">
+      <div class="my-2 md:w-2/3">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" class="w-10 h-10 inline-block mr-1" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"/></svg>
+        <span>
+          Say goodbye to complicated tracking spreadsheets
+        </span>
+      </div>
+    </div>
+
+    <div class="my-5">
+      <div class="my-2 md:w-2/3">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" class="w-10 h-10 inline-block mr-1" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"/></svg>
+        <span>
+          Convenient access to original job post information and URL for quick retrieval
+        </span>
+      </div>
+    </div>
+
+    <div class="my-5">
+      <div class="my-2 md:w-2/3">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" class="w-10 h-10 inline-block mr-1" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"/></svg>
+        <span>
+          Get rewarded when you get your daily applications!
+        </span>
+      </div>
+      <%= image_tag "reward", class: 'md:w-2/3 md:ml-20' %>
+    </div>
+  </div>
 </div>
