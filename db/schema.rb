@@ -58,6 +58,14 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_09_164933) do
     t.index ["job_id"], name: "index_notes_on_job_id"
   end
 
+  create_table "settings", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "days_to_auto_archive", default: 21, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_settings_on_user_id"
+  end
+
   create_table "sources", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false

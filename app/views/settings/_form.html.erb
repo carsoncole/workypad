@@ -1,0 +1,24 @@
+<%= form_with(model: setting, class: "contents") do |form| %>
+  <% if setting.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(setting.errors.count, "error") %> prohibited this setting from being saved:</h2>
+
+      <ul>
+        <% setting.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-5">
+    <%= form.label :days_to_auto_archive, class: 'font-bold' %>
+    <div class='w-20'>
+      <%= form.number_field :days_to_auto_archive, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 w-full mt-3" %>
+    </div>
+  </div>
+
+  <div class="inline">
+    <%= form.submit 'Update', class: "mt-20 rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>
