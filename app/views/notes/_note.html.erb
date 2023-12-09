@@ -1,6 +1,9 @@
 <div id="<%= dom_id note %>" class="mb-2 flex justify-between gap-5">
   <p class="mb-2 max-w-prose">
     <span class='font-bold pr-2 text-sm'><%= note.created_at.strftime("%b %d '%Y") %></span>
+    <span class='bg-gray-300 rounded font-medium py-1 px-3 mr-2'>
+      <%= note&.category&.humanize&.capitalize %>
+    </span>
     <%= note.content %>
   </p>
 

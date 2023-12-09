@@ -31,7 +31,7 @@
 <div class='flex flex-col'>
 
   <div class="text-lg md:text-lg font-bold tracking-tight text-ellipsis mb-1">
-    <%= link_to job.title, job_path(job), class: "hover:text-gray-500 text-gray-800" %>
+    <%= link_to job.title, job_path(job), class: "hover:text-gray-500 text-gray-800", data: { turbo_frame: '_top' } %>
   </div>
 
   <div class="flex">

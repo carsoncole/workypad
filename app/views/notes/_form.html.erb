@@ -23,6 +23,10 @@
     <%= form.text_area :content, rows: 8, id: 'note-content', placeholder: 'Enter note.. ', class: "block shadow dark:text-black rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
+  <div class="my-5">
+    <%= form.select :category, options_for_select(Note.categories.map{|k,v| [k.humanize.capitalize, k] }, @note.category), {}, id: 'category-select', class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:text-gray-900" %>
+  </div>
+
   <div class="inline">
     <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
   </div>

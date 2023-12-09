@@ -11,7 +11,7 @@ class JobsController < ApplicationController
   end
 
   def index
-    puts turbo_frame_request? ? "* Hotwire *" * 20 : "* HTML *" * 20
+    puts turbo_frame_request? ? "* Hotwire *" * 20 : nil
     if params[:query].present?
       @jobs = Job.where("entity ILIKE ? OR title ILIKE ? OR description ILIKE ? OR primary_contact_name ILIKE ?", "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%", "%#{params[:query]}%").order(:order)
     elsif params[:archived]

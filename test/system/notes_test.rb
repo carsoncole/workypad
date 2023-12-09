@@ -17,6 +17,7 @@ class NotesTest < ApplicationSystemTestCase
     click_on "New note"
 
     fill_in "note-content", with: @note.content
+    select('Interview', :from => 'category-select')
     click_on "Create Note"
   end
 
