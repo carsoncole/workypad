@@ -1,9 +1,15 @@
-<div class="mx-auto h-60 w-full md:w-1/2 flex flex-col">
+<div id="settings" class="">
+  <div class="dark:text-white mb-10">
+    <h1 class="font-bold text-4xl">Settings</h1>
 
-  <%= turbo_frame_tag @setting do %>
-    <%= render @setting %>
+    <div class="mx-auto h-60 w-full md:w-1/2 flex flex-col">
 
-    <%= link_to "Edit", edit_setting_path(@setting), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium", data: { turbo_frame: "setting_#{@setting.id}" } %>
-  <% end %>
+      <%= turbo_frame_tag @setting do %>
+        <%= render @setting %>
 
+        <%= link_to "Edit", edit_setting_path(@setting), class: "mt-20 max-w-max rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium", data: { turbo_frame: "setting_#{@setting.id}" } %>
+      <% end %>
+
+    </div>
+  </div>
 </div>

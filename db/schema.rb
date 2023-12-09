@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_07_185806) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_09_164933) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -54,7 +54,16 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_07_185806) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "category"
     t.index ["job_id"], name: "index_notes_on_job_id"
+  end
+
+  create_table "settings", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "days_to_auto_archive", default: 21, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_settings_on_user_id"
   end
 
   create_table "sources", force: :cascade do |t|
