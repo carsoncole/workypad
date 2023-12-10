@@ -11,6 +11,7 @@
       <%= render 'shared/nav' %>
       <%= yield %>
     <%= render 'shared/footer' if signed_in? %>
+    <%= render 'shared/public_footer' if !signed_in? %>
     </main>
   </body>
 </html>

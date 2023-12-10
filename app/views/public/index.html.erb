@@ -1,8 +1,14 @@
 <div class="dark:text-white">
-  <div class="mt-20 mb-8 tracking-tight text-5xl font-medium dark:text-white">
-    Simplified job search tracking
+  <div class="mt-20 mb-10 tracking-tight text-5xl font-light dark:text-white">
+    <span class="border-r-2 pr-2 mr-2">
+      WorkyPad
+    </span>
+    <span class="font-bold">
+      Simplified
+    </span>
+     Job Search Tracking
   </div>
-  <div class="flex justify-center md:justify-start mb-4 items-center align-center">
+  <div class="border-t border-b py-3 flex justify-center mb-20 items-center align-center">
     <%= link_to 'Sign in', sign_in_path, class: 'button-lg bg-amber-200 mr-5' %>
     <%= link_to 'Sign up', sign_up_path, class: 'align-middle' %>
   </div>
@@ -13,14 +19,15 @@
   </div>
 
 
-  <div class="text-xl font-medium dark:text-white flex flex-col md:ml-20">
+  <div class="text-xl font-bold drop-shadow dark:text-white flex flex-col md:ml-20">
     <div class="my-5">
       <div class="my-2 md:w-2/3">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" class="w-10 h-10 inline-block mr-1" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"/></svg>
         <span>
-          Comprehensive status overview of your job prospects on a single dashboard
+          Comprehensive status overview of your job prospects on a single, drag-and-drop dashboard
         </span>
       </div>
+      <%= image_tag "job-board", class: 'mt-6 md:w-2/3 md:ml-20 shadow-xl' %>
     </div>
 
     <div class="my-5">
@@ -30,6 +37,7 @@
           Effortlessly record details of your interactions with prospective employers, including application submissions, interviews, and calls
         </span>
       </div>
+      <%= image_tag "notes", class: 'mt-6 ml-20 md:ml-40 md:w-1/2 shadow-xl' %>
     </div>
 
     <div class="my-5">
@@ -38,6 +46,10 @@
         <span>
           Say goodbye to complicated tracking spreadsheets
         </span>
+        <div class="flex items-end justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="0.5" class="w-44 h-44" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.375 19.5h17.25m-17.25 0a1.125 1.125 0 0 1-1.125-1.125M3.375 19.5h7.5c.621 0 1.125-.504 1.125-1.125m-9.75 0V5.625m0 12.75v-1.5c0-.621.504-1.125 1.125-1.125m18.375 2.625V5.625m0 12.75c0 .621-.504 1.125-1.125 1.125m1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125m0 3.75h-7.5A1.125 1.125 0 0 1 12 18.375m9.75-12.75c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125m19.5 0v1.5c0 .621-.504 1.125-1.125 1.125M2.25 5.625v1.5c0 .621.504 1.125 1.125 1.125m0 0h17.25m-17.25 0h7.5c.621 0 1.125.504 1.125 1.125M3.375 8.25c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125m17.25-3.75h-7.5c-.621 0-1.125.504-1.125 1.125m8.625-1.125c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125m-17.25 0h7.5m-7.5 0c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125M12 10.875v-1.5m0 1.5c0 .621-.504 1.125-1.125 1.125M12 10.875c0 .621.504 1.125 1.125 1.125m-2.25 0c.621 0 1.125.504 1.125 1.125M13.125 12h7.5m-7.5 0c-.621 0-1.125.504-1.125 1.125M20.625 12c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125m-17.25 0h7.5M12 14.625v-1.5m0 1.5c0 .621-.504 1.125-1.125 1.125M12 14.625c0 .621.504 1.125 1.125 1.125m-2.25 0c.621 0 1.125.504 1.125 1.125m0 1.5v-1.5m0 0c0-.621.504-1.125 1.125-1.125m0 0h7.5"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2.5" class="w-20 h-20 text-red-600 -ml-10 -mt-5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/></svg>
+        </div>
       </div>
     </div>
 
@@ -48,6 +60,7 @@
           Convenient access to original job post information and URL for quick retrieval
         </span>
       </div>
+      <%= image_tag "job", class: 'mt-6 ml-20 md:ml-40 shadow-xl' %>
     </div>
 
     <div class="my-5">
@@ -57,7 +70,13 @@
           Get rewarded when you get your daily applications!
         </span>
       </div>
-      <%= image_tag "reward", class: 'md:w-2/3 md:ml-20' %>
+      <%= image_tag "reward", class: 'mt-6 md:w-2/3 md:ml-20' %>
     </div>
   </div>
+
+  <div class="mt-10 border-t border-b py-3 flex justify-center mb-20 items-center align-center">
+    <%= link_to 'Sign in', sign_in_path, class: 'button-lg bg-amber-200 mr-5' %>
+    <%= link_to 'Sign up', sign_up_path, class: 'align-middle' %>
+  </div>
+
 </div>
