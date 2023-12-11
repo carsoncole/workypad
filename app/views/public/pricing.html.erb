@@ -3,10 +3,17 @@
     <h1 class="text-5xl font-bold mb-28">
       Pricing
     </h1>
-    <p class="text-2xl mb-28">
+    <p class="text-2xl mb-10">
       <span class="font-bold">Free. Forever.</span>
       That's the plan at least. At a minimum, we'll let you know if it changes, but any change will be no less than 6 months from the date you signed up.
     </p>
+
+    <div class="text-center">
+      <%= link_to root_path do %>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" class="w-7 h-7 mr-1 inline-block" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18"/></svg>
+        <span> Back to home</span>
+      <% end %>
+    </div>
 
     <%= render 'public/take_action' %>
   </div>
