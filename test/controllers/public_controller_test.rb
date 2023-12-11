@@ -5,4 +5,9 @@ class PublicControllerTest < ActionDispatch::IntegrationTest
     get root_url
     assert_response :success
   end
+
+  test "should get pricing" do
+    get pricing_url
+    assert_response :success
+  end
 end

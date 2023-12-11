@@ -7,4 +7,9 @@ class PublicTest < ApplicationSystemTestCase
     assert_text "Simplified Job Search Tracking"
   end
 
+  test "visiting pricing" do
+    visit pricing_url
+    assert_text "Pricing"
+  end
+
 end
