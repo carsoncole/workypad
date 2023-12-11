@@ -1,20 +1,24 @@
-<div id="clearance" class="sign-up mt-20 mx-auto">
-  <h1 class="text-2xl font-bold dark:text-white"><%= t(".title") %></h1>
+<div id="clearance" class="sign-up md:flex mt-14 md:mt-20 md:justify-center mx-auto">
+  <div class='w-full md:w-80'>
+    <h1 class="hidden md:block text-2xl font-bold dark:text-white align-start">
+      <%= t(".title") %>
+    </h1 >
 
 
-  <p class="my-10">
-    <%= link_to "Pricing", pricing_path %>
-  </p>
+    <p class="my-10">
+      <%= link_to "Pricing", pricing_path %>
+    </p>
 
-  <%= form_for @user do |form| %>
-    <%= render partial: '/users/form', object: form %>
+    <%= form_for @user do |form| %>
+      <%= render partial: '/users/form', object: form %>
 
-    <div class="submit-field mb-5">
-      <%= form.submit class: "col-1 rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
-    </div>
+      <div class="submit-field mb-5">
+        <%= form.submit class: "col-1 rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+      </div>
 
-    <div class="other-links">
-      <%= link_to t(".sign_in"), sign_in_path %>
-    </div>
-  <% end %>
+      <div class="other-links">
+        <%= link_to t(".sign_in"), sign_in_path %>
+      </div>
+    <% end %>
+  </div>
 </div>
