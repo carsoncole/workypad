@@ -8,7 +8,7 @@ class Job < ApplicationRecord
 
   enum status: { research: 0, applied: 1, interview: 2, test: 3, offer: 4, archived: 5 }
   enum mode: { office: 1, hybrid: 2, remote: 3, other: 9 }
-  enum arrangement: { not_set: 1, permanent: 2, contract: 3, contract_to_hire: 4, freelance: 5, internship: 6}
+  enum arrangement: { not_set: 1, full_time: 2, contract: 3, contract_to_hire: 4, freelance: 5, internship: 6}
 
   belongs_to :user
   belongs_to :source, optional: true
