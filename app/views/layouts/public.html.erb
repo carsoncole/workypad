@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= render "shared/head" %>
+  </head>
+
+  <body class="dark:bg-gray-900 pb-5">
+    <%= render 'shared/header' %>
+    <%= render 'shared/flash' if flash.present? %>
+    <main class="mt-5">
+      <%= render 'shared/nav' %>
+      <%= yield %>
+    <%= render 'shared/footer' if signed_in? %>
+    <%= render 'shared/public_footer' if !signed_in? %>
+    </main>
+  </body>
+</html>
