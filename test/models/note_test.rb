@@ -15,4 +15,20 @@ class NoteTest < ActiveSupport::TestCase
     @job.archived!
     assert_equal 'archive', @job.notes.last.category
   end
+
+  test "applied at with category applied" do
+    assert_not_equal 'applied', @job.status
+    assert_nil @job.applied_at
+
+    note = create(:note, job: @job, category: 'applied')
+    assert_not_nil @job.reload.applied_at
+  end
+
+  test "archived at with category archive" do
+    assert_not_equal 'archived', @job.status
+    assert_nil @job.archived_at
+
+    note = create(:note, job: @job, category: 'archive')
+    assert_not_nil @job.reload.archived_at
+  end
 end

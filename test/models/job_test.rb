@@ -23,7 +23,7 @@ class JobTest < ActiveSupport::TestCase
     assert_equal Job.rank(:order).fourth, list[2]
   end
 
-  test "applied at" do
+  test "applied at with status applied" do
     job = create(:job, user: @user)
     assert_nil job.applied_at
 
