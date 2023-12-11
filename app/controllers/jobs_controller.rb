@@ -28,28 +28,14 @@ class JobsController < ApplicationController
     @application_badge = true if current_user.notes.applied.where("notes.created_at > ?", Time.now - 24.hours).count > 2
   end
 
-
-  def all
-   if params[:query].present?
-      @jobs = Job.where("entity ILIKE ? OR title ILIKE ?", "%#{params[:query]}%", "%#{params[:query]}%")
-    elsif params[:archived]
-      @jobs = current_user.jobs.archived.order(order: :desc)
-    else
-      @jobs = current_user.jobs.not_archived.rank(:order).all
-    end
-  end
-
-  # GET /jobs/1 or /jobs/1.json
   def show
     @notes = @job.notes.limit(3)
   end
 
-  # GET /jobs/new
   def new
     @job = Job.new
   end
 
-  # GET /jobs/1/edit
   def edit
   end
 
