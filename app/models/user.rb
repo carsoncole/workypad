@@ -1,4 +1,5 @@
 #TODO remove forgot password
+#TODO flash notice of sign up problems
 class User < ApplicationRecord
   include Clearance::User
 

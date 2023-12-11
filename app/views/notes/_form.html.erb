@@ -12,14 +12,6 @@
   <% end %>
 
   <div class="my-5">
-    <%= link_to jobs_path do %>
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2.5" class="w-7 h-7 mr-1 inline-block" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18"/></svg>
-      <span> Back to job</span>
-    <% end %>
-
-  </div>
-
-  <div class="my-5">
     <%= form.text_area :content, rows: 8, id: 'note-content', placeholder: 'Enter note.. ', class: "block shadow dark:text-black rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
