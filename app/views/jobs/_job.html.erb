@@ -1,4 +1,4 @@
-<div id="<%= dom_id job %> options" data-controller="visibility" class='card w-full max-h-max md:w-96' data-sortable-update-url="<%= job_path(job) %>">
+<div id="<%= dom_id job %> options" data-controller="visibility" class="card w-full max-h-max <%= action_name == 'show' ? 'md:w-1/2' : 'md:w-96' %>" data-sortable-update-url="<%= job_path(job) %>">
   <div class="flex justify-between">
 
     <div class="w-8 bg-gray-500 text-white font-bold flex items-center justify-center">
@@ -7,10 +7,10 @@
       </div>
     </div>
 
-    <div class="p-7 w-full">
+    <div class="px-7 py-4 w-full">
       <%= render 'header', job: job %>
 
-      <div data-visibility-target="hideable" class='hidden'>
+      <div data-visibility-target="hideable" class="<%= action_name == 'show' ? nil : 'hidden' %>">
         <%= render 'details',  job: job %>
       </div>
 

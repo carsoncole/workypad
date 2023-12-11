@@ -1,10 +1,10 @@
 <div class="flex justify-between border-b mb-1 pb-1 font-bold text-sm uppercase items-center">
   <% if action_name == 'index' %>
-    <div class='text-gray-800 text-xl tracking-tight truncate w-60'>
+    <div class='text-gray-800 text-lg tracking-tight truncate w-60'>
       <%= job.entity %>
     </div>
   <% else %>
-    <div class='text-gray-800 text-xl tracking-tight truncate'>
+    <div class='text-gray-800 text-lg tracking-tight truncate'>
       <%= job.entity %>
     </div>
   <% end %>
@@ -21,29 +21,34 @@
       <div class="font-bold text-xl bg-gray-100 ml-1 py-1 px-2 rounded-lg align-middle">
         <%= days_since_status_change(job) %>
       </div>
-      <button data-action="visibility#toggleTargets">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" id="visibility_<%= job.id %>" class="w-6 h-6 -mt-9 -mr-6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15 12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9"/></svg>
-      </button>
+
     <% end %>
   </div>
 </div>
 
-<div class='flex flex-col my-3'>
+<div class='flex flex-col mb-3'>
 
-  <div class="text-lg md:text-lg font-bold tracking-tight text-ellipsis mb-1">
+  <div class="text-lg md:text-lg font-medium tracking-tight text-ellipsis mb-4">
     <%= link_to job.title, job_path(job), class: "hover:text-gray-500 text-gray-800", data: { turbo_frame: '_top' } %>
   </div>
 
-  <div class="flex">
-    <% if job.mode %>
-      <div class="bg-gray-200 max-w-max px-2 py-1 text-sm">
-        <%= job.mode.humanize.capitalize %>
-      </div>
-    <% end %>
-    <% if !job.not_set? %>
-      <div class="bg-gray-700 text-white max-w-max px-2 py-1 text-sm">
-        <%= job.arrangement.humanize.capitalize %>
-      </div>
+  <div class="flex justify-between">
+    <div class="flex">
+      <% if job.mode %>
+        <div class="bg-gray-200 max-w-max px-2 py-1 text-sm">
+          <%= job.mode.humanize.capitalize %>
+        </div>
+      <% end %>
+      <% if !job.not_set? %>
+        <div class="bg-gray-700 text-white max-w-max px-2 py-1 text-sm">
+          <%= job.arrangement.humanize.capitalize %>
+        </div>
+      <% end %>
+    </div>
+    <% if action_name == 'index' %>
+      <button data-action="visibility#toggleTargets">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2.0" id="visibility_<%= job.id %>" class="w-7 h-7 text-gray-500" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15 12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9"/></svg>
+      </button>
     <% end %>
   </div>
 

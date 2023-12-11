@@ -1,7 +1,7 @@
 class Note < ApplicationRecord
   belongs_to :job
 
-  enum category: { applied: 1, interview: 2, test: 3, call: 4, email: 5, archive: 10, general: 99 }, _default: "general"
+  enum category: { applied: 1, interview: 2, test: 3, call: 4, email: 5, message: 6, archive: 10, general: 99 }, _default: "general"
 
   after_create :update_job_applied_status!, if: ->(obj){ obj.applied? }
 
