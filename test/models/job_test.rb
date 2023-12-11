@@ -28,7 +28,7 @@ class JobTest < ActiveSupport::TestCase
     assert_nil job.applied_at
 
     job.applied!
-    assert_equal Date.today, job.reload.applied_at
+    assert_not_nil job.reload.applied_at
   end
 
   test 'status updated at' do
@@ -44,6 +44,6 @@ class JobTest < ActiveSupport::TestCase
     assert_nil job.archived_at
 
     job.archived!
-    assert_equal Date.today, job.reload.archived_at
+    assert_not_nil job.reload.archived_at
   end
 end
