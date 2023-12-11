@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class JobsTest < ApplicationSystemTestCase
   setup do
-    @job = create(:job)
+    @job = create(:job, title: 'Asst to the Mgr')
     @user = @job.user
   end
 
@@ -68,7 +68,7 @@ class JobsTest < ApplicationSystemTestCase
     fill_in "search", with: "agent\n"
     assert_text "Tarmac agent"
     assert_text "DOUBLE AGENT"
-    assert_no_text @job.title
+    assert_no_text 'Asst to the Mgr'
   end
 
   test "application badge" do
