@@ -3,4 +3,7 @@ class PublicController < ActionController::Base
 
   def index
   end
+
+  def pricing
+  end
 end

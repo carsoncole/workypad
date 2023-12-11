@@ -1,13 +1,18 @@
 <header class='flex justify-between align-middle p-3 bg-gray-900 dark:bg-gray-700'>
-  <div class='font-bold text-2xl'>
-    <%= link_to "WorkyPad", root_path, class: 'align-middle tracking-tight dark:text-white text-white' %>
+  <div class="flex items-center">
+    <div class='font-bold text-2xl'>
+      <%= link_to "WorkyPad", root_path, class: 'align-middle tracking-tight dark:text-white text-white hover:text-gray-300' %>
+    </div>
+    <div class="text-sm font-light ml-10">
+      <%= link_to "Pricing", pricing_path, class: 'text-gray-200 hover:text-gray-400' %>
+    </div>
   </div>
 
-  <div>
+  <div class="flex items-center">
     <% if signed_in? %>
-      <%= button_to 'Sign out', sign_out_path, method: :delete, class: 'align-middle text-gray-200 dark:text-gray-400 ' %>
+      <%= button_to 'Sign out', sign_out_path, method: :delete, class: 'align-middle text-gray-200 dark:text-gray-400 hover:text-gray-400 ' %>
     <% else %>
-      <%= link_to 'Sign in', sign_in_path, class: 'align-middle text-gray-200 dark:text-gray-400 ' %>
+      <%= link_to 'Sign in', sign_in_path, class: 'align-middle text-gray-200 dark:text-gray-400 hover:text-gray-400 ' %>
     <% end %>
   </div>
 </header>

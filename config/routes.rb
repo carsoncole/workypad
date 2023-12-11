@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :settings, only: [:show, :edit, :update]
+
   constraints Clearance::Constraints::SignedIn.new do
     root to: "jobs#dashboard", as: :signed_in_root
   end
@@ -8,11 +8,15 @@ Rails.application.routes.draw do
     root to: "public#index"
   end
 
+  get 'pricing' => 'public#pricing', as: 'pricing'
+
   get '/dashboard' => 'jobs#dashboard', as: 'dashboard'
 
   resources :jobs do
     resources :notes
   end
+
+  resources :settings, only: [:show, :edit, :update]
 
   resources :feedbacks, only: [:index, :create, :destroy]
 
