@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   constraints Clearance::Constraints::SignedIn.new do
-    root to: "jobs#dashboard", as: :signed_in_root
+    root to: "jobs#index", as: :signed_in_root
   end
 
   constraints Clearance::Constraints::SignedOut.new do
