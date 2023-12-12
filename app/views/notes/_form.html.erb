@@ -11,7 +11,13 @@
     </div>
   <% end %>
 
-  <div class="mb-5">
+  <% if action_name == 'edit' %>
+    <div class="my-5">
+      <%= form.date_select :created_at, { }, default: Date.today, id: 'note-date', class: "max-w-max inline-block rounded-md border border-gray-200 outline-none pr-8 py-2" %>
+    </div>
+    <% end %>
+
+  <div class="my-5">
     <%= form.text_area :content, rows: 3, id: 'note-content', placeholder: 'Enter note.. ', class: "block shadow dark:text-black rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 

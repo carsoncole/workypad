@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get '/dashboard' => 'jobs#dashboard', as: 'dashboard'
 
   resources :jobs do
-    resources :notes, only: [:index, :create, :destroy]
+    resources :notes, only: [:index, :create, :destroy, :edit, :update]
   end
 
   resources :settings, only: [:show, :edit, :update]

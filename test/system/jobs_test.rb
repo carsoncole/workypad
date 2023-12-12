@@ -12,7 +12,7 @@ class JobsTest < ApplicationSystemTestCase
 
   test "should show job" do
     visit job_url(@job, as: @user)
-    find("#visibility_#{@job.id}").click
+    assert_text @job.entity.upcase
   end
 
   test "should create job" do
@@ -33,7 +33,6 @@ class JobsTest < ApplicationSystemTestCase
   test "should update Job" do
     visit job_url(@job, as: @user)
     sleep 0.25
-    find("#visibility_#{@job.id}").click
     click_on "edit_job_#{@job.id}", match: :first
 
     fill_in "Description", with: @job.description
@@ -46,7 +45,6 @@ class JobsTest < ApplicationSystemTestCase
 
   test "should archive Job" do
     visit job_url(@job, as: @user)
-    find("#visibility_#{@job.id}").click
 
     assert_difference('Job.archived.count') do
       click_on "archive_job_#{@job.id}"
@@ -54,10 +52,8 @@ class JobsTest < ApplicationSystemTestCase
     end
   end
 
-
   test "should destroy Job" do
     visit job_url(@job, as: @user)
-    find("#visibility_#{@job.id}").click
 
     accept_confirm do
       click_on "delete_job_#{@job.id}", match: :first

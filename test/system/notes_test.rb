@@ -12,14 +12,25 @@ class NotesTest < ApplicationSystemTestCase
     assert_selector "h1", text: "Notes"
   end
 
-  test "should create note" do
+  test "should create note on job show" do
     visit job_notes_url(@job, as: @user)
-    click_on "New note"
 
     fill_in "note-content", with: @note.content
     select('Interview', :from => 'category-select')
     click_on "Create Note"
   end
+
+
+  test "should create note on jobs" do
+    visit jobs_url(as: @user)
+    find("#visibility_#{@job.id}").click
+    click_on "new_job_note_#{@job.id}"
+
+    fill_in "note-content", with: @note.content
+    select('Interview', :from => 'category-select')
+    click_on "Create Note"
+  end
+
 
   test "should destroy Note" do
     visit job_notes_url(@job, as: @user)
