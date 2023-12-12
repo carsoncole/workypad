@@ -10,6 +10,14 @@ class User < ApplicationRecord
 
   after_create :create_setting!
 
+
+  # badge award if applied > 2 times today
+  def application_badge?
+    notes.applied.where("notes.created_at > ?", Date.today.beginning_of_day).count > 2
+  end
+
+  private
+
   def create_setting!
     create_setting
   end

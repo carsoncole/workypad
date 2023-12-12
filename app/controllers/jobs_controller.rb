@@ -25,7 +25,7 @@ class JobsController < ApplicationController
       @jobs = current_user.jobs.not_archived.rank(:order)
     end
 
-    @application_badge = true if current_user.notes.applied.where("notes.created_at > ?", Time.now - 24.hours).count > 2
+    @application_badge = true if current_user.application_badge?
   end
 
   def show
