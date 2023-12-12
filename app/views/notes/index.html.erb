@@ -6,16 +6,17 @@
     <% end %>
   </p>
 
+  <div class="md:w-2/3 md:mx-auto dark:text-white mb-10">
+    <h1 class="font-bold text-4xl">Notes</h1>
+  </div>
+
+
   <div class="mb-10 md:mx-auto md:w-2/3 py-4 px-7 bg-gray-200 rounded">
     <%= render 'form', note: @note  %>
   </div>
 
   <div class="md:w-2/3 mx-auto">
     <div id="notes" class="">
-      <div class="dark:text-white mb-10">
-        <h1 class="font-bold text-4xl">Notes</h1>
-      </div>
-
       <%= render partial: @notes, spacer_template: "notes_spacer" %>
     </div>
   </div>
