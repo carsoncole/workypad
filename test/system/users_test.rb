@@ -8,10 +8,10 @@ class UsersTest < ApplicationSystemTestCase
 
   test "application badge" do
     visit root_url(as: @user)
-    assert_no_text "Congrats! You earned the Application Badge"
+    assert_no_text "Congratulations! You've earned the Application Badge by submitting over 2 applications today."
 
     create_list(:job, 2, user: @user, status: 'applied')
     visit root_url(as: @user)
-    assert_text "Congrats! You earned the Application Badge"
+    assert_text "Congratulations! You've earned the Application Badge by submitting over 2 applications today."
   end
 end
