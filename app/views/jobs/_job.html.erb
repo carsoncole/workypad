@@ -8,10 +8,13 @@
     </div>
 
     <div class="px-7 py-4 w-full">
-      <%= render 'header', job: job %>
+      <%= link_to job, data: { turbo_frame: '_top' } do %>
+        <%= render 'header', job: job %>
+      <% end %>
 
       <div data-visibility-target="hideable" class="<%= action_name == 'show' ? nil : 'hidden' %>">
         <%= render 'details',  job: job %>
+
       </div>
 
     </div>
