@@ -95,3 +95,9 @@
   </div>
   <%= render 'actions', job: job %>
 </div>
+
+<% if action_name == 'show' %>
+  <div class='text-xs my-10'>
+    <%= job.listing %>
+  </div>
+<% end %>
