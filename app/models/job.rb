@@ -4,6 +4,8 @@ class Job < ApplicationRecord
   ranks :order,
     with_same: :user_id
 
+  has_rich_text :listing
+
   attr_accessor :position
 
   enum status: { research: 0, applied: 1, interview: 2, test: 3, offer: 4, archived: 5 }
