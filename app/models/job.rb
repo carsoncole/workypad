@@ -42,6 +42,22 @@ class Job < ApplicationRecord
     self
   end
 
+  def days_since_last_note?
+    if notes.any?
+      exact_days_since_last_note?.floor
+    else
+      0
+    end
+  end
+
+  def exact_days_since_last_note?
+    if notes.any?
+      (Time.now - notes.order(:created_at).last.created_at).to_f/1.day
+    else
+      0
+    end
+  end
+
   private
 
   def update_status_updated_at!
