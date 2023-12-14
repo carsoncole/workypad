@@ -1,11 +1,19 @@
-<div class="flex justify-between border-b mb-1 pb-1 font-bold text-sm uppercase items-center">
+<div class="flex justify-between border-b mb-1 pb-1 font-bold text-sm uppercase items-center items-middle">
   <% if action_name == 'index' %>
     <div class='text-gray-800 text-lg tracking-tight truncate w-60'>
-      <%= job.entity %>
+      <% if job.entity.present? %>
+        <%= job.entity %>
+      <% elsif job.agency.present? %>
+        <%= job.agency %>
+      <% end %>
     </div>
   <% else %>
     <div class='text-gray-800 text-2xl tracking-tight truncate'>
-      <%= job.entity %>
+      <% if job.entity.present? %>
+        <%= job.entity %>
+      <% elsif job.agency.present? %>
+        <%= job.agency %>
+      <% end %>
     </div>
   <% end %>
 
@@ -31,7 +39,7 @@
   </div>
 
   <div class="flex justify-between">
-    <div class="flex">
+    <div class="flex" id='job-indicators'>
       <% if job.mode %>
         <div class="bg-gray-200 max-w-max px-2 py-1 text-sm">
           <%= job.mode.humanize.capitalize %>
@@ -40,6 +48,11 @@
       <% if !job.not_set? %>
         <div class="bg-gray-700 text-white max-w-max px-2 py-1 text-sm">
           <%= job.arrangement.humanize.capitalize %>
+        </div>
+      <% end %>
+      <% if job.agency.present? %>
+        <div class="bg-teal-700 text-white max-w-max px-2 py-1 text-sm">
+          Agency
         </div>
       <% end %>
     </div>

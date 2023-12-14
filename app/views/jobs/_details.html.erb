@@ -10,6 +10,13 @@
     </button>
   </div>
 
+  <% if job.agency.present? %>
+    <div class="my-3 flex flex-col">
+      <div class='text-xs'>Agency</div>
+      <div><%= job.agency %></div>
+    </div>
+  <% end %>
+
 
   <div class="my-3 flex flex-col">
     <div class='text-xs'>Status</div>

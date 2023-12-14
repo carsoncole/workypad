@@ -16,7 +16,9 @@ class Job < ApplicationRecord
   belongs_to :source, optional: true
   has_many :notes, dependent: :destroy
 
-  validates :entity, :title, :status, presence: true
+  validates :entity, presence: true, unless: -> (obj){ obj.agency.present? }
+  validates :agency, presence: true, unless: -> (obj){ obj.entity.present? }
+  validates :title, :status, presence: true
 
   # before_create :add_initial_order!
   before_save :update_status_updated_at!, if: ->(obj){ !obj.persisted? || obj.will_save_change_to_status? }

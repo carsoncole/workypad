@@ -19,18 +19,13 @@
       </div>
 
       <div class="my-5">
-        <%= form.label :entity_url, class: "font-bold" %>
-        <%= form.text_field :entity_url, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:text-gray-900" %>
+        <%= form.label :agency, class: "font-bold" %>
+        <%= form.text_field :agency, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:text-gray-900" %>
       </div>
 
-      <div class="my-5 md:flex md:items-center">
-        <div class="md:w-1/3"></div>
-        <label class="md:w-2/3 block text-gray-500 font-bold">
-          <%= form.check_box :is_agency, class: "rounded mr-2 leading-tight" %>
-          <span class="text-sm">
-            Agency
-          </span>
-        </label>
+      <div class="my-5">
+        <%= form.label :entity_url, class: "font-bold" %>
+        <%= form.text_field :entity_url, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:text-gray-900" %>
       </div>
 
       <div class="my-5">
@@ -45,12 +40,12 @@
 
       <div class="my-5">
         <%= form.label :mode, class: "font-bold" %>
-        <%= form.select :mode, options_for_select(Job.modes.map{|k,v| [k.humanize.capitalize, k] }, @job.mode), {}, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:text-gray-900" %>
+        <%= form.select :mode, options_for_select(Job.modes.map{|k,v| [k.humanize.capitalize, k] }, @job.mode), {}, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:text-gray-900", id: "mode-select" %>
       </div>
 
       <div class="my-5">
         <%= form.label :arrangement, class: "font-bold" %>
-        <%= form.select :arrangement, options_for_select(Job.arrangements.map{|k,v| [k.humanize.capitalize, k] }, @job.arrangement), {}, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:text-gray-900" %>
+        <%= form.select :arrangement, options_for_select(Job.arrangements.map{|k,v| [k.humanize.capitalize, k] }, @job.arrangement), {}, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:text-gray-900", id: "arrangement-select" %>
       </div>
 
       <div class="my-5">
@@ -79,7 +74,7 @@
       </div>
       <div class="my-5">
         <%= form.label :status, class: "font-bold" %>
-        <%= form.select :status, options_for_select(Job.statuses.map{|k,v| [k.humanize.capitalize, k] }, @job.status), {}, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:text-gray-900" %>
+        <%= form.select :status, options_for_select(Job.statuses.map{|k,v| [k.humanize.capitalize, k] }, @job.status), {}, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:text-gray-900", id: "status-select" %>
       </div>
       <div class="my-5">
         <%= form.label :source, class: "font-bold" %>

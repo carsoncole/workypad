@@ -21,13 +21,20 @@ class JobsTest < ApplicationSystemTestCase
 
     fill_in "Description", with: @job.description
     fill_in "Entity", with: @job.entity
-    # fill_in "Status", with: @job.status
+    select('Applied', :from => 'status-select')
+    select('Remote', :from => 'mode-select')
+    select('Full time', :from => 'arrangement-select')
     fill_in "Title", with: @job.title
     fill_in "Url", with: @job.url
     click_on "Create Job"
 
     assert_text "Job was successfully created"
-    click_on "Back"
+    within "#job-indicators" do
+      assert_text "Full time"
+      assert_text "Remote"
+    end
+
+    click_on "Back to jobs"
   end
 
   test "should update Job" do
@@ -35,12 +42,13 @@ class JobsTest < ApplicationSystemTestCase
     sleep 0.25
     click_on "edit_job_#{@job.id}", match: :first
 
-    fill_in "Description", with: @job.description
-    fill_in "Entity", with: @job.entity
-    # fill_in "Status", with: @job.status
-    fill_in "Title", with: @job.title
-    fill_in "Url", with: @job.url
+    fill_in "Agency", with: "Some agency"
     click_on "Update Job"
+
+    within "#job-indicators" do
+      assert_text "Agency"
+    end
+
   end
 
   test "should archive Job" do
