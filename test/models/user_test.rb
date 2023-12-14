@@ -24,5 +24,17 @@ class UserTest < ActiveSupport::TestCase
     assert @user.application_badge?
   end
 
+  test "fire badge" do
+    assert_not @user.application_badge?
+
+    jobs = create_list(:job, 3, user: @user)
+
+    note_0 = create(:note, job: jobs[0], category: 'applied')
+    note_0.update(created_at: Time.now - 1.day)
+    assert_not @user.fire_badge?
+
+    create_list(:note, 4, job: jobs[1], category: 'applied')
+    assert @user.application_badge?
+  end
 end
 

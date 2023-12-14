@@ -16,6 +16,11 @@ class User < ApplicationRecord
     notes.applied.where("notes.created_at > ?", Date.today.beginning_of_day).count > 2
   end
 
+  # badge award if applied > 2 times today
+  def fire_badge?
+    notes.applied.where("notes.created_at > ?", Date.today.beginning_of_day).count > 4
+  end
+
   private
 
   def create_setting!

@@ -9,7 +9,6 @@ class JobsController < ApplicationController
     else
       false
     end
-    @application_badge = true if current_user.notes.applied.where("notes.created_at > ?", Time.now - 24.hours).count > 2
   end
 
   def index

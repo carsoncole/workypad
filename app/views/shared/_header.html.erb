@@ -6,6 +6,21 @@
     <div class="text-sm font-light ml-10">
       <%= link_to "Pricing", pricing_path, class: 'text-gray-200 hover:text-gray-400' %>
     </div>
+
+    <% if signed_in? %>
+      <% if current_user.application_badge? %>
+        <div class="ml-5">
+          <%= render 'shared/badge_application_small', id: 'application_badge' %>
+        </div>
+      <% end %>
+
+      <% if current_user.fire_badge? %>
+        <div class="ml-1">
+          <%= render 'shared/badge_fire_small', id: 'fire_badge' %>
+        </div>
+      <% end %>
+    <% end %>
+
   </div>
 
   <div class="flex items-center">
