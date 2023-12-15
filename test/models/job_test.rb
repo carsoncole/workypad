@@ -51,8 +51,7 @@ class JobTest < ActiveSupport::TestCase
     job = create(:job, user: @user)
     note = create(:note, job: job)
     time = Time.now - 7.days
-    note.update(created_at: time)
-
+    job.notes.update_all(created_at: time)
     assert_equal 7, job.days_since_last_note?
     assert job.exact_days_since_last_note? > 7
   end

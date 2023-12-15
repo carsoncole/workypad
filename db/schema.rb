@@ -10,18 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_14_174434) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_15_183616) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
     t.string "record_type", null: false
-    t.bigint "record_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+    t.uuid "record_id"
+    t.integer "old_record_id"
   end
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -62,7 +63,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_14_174434) do
     t.index ["user_id"], name: "index_feedbacks_on_user_id"
   end
 
-  create_table "jobs", force: :cascade do |t|
+  create_table "jobs", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.bigint "user_id"
     t.string "entity"
     t.string "title"
@@ -84,17 +85,18 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_14_174434) do
     t.datetime "archived_at"
     t.string "entity_url"
     t.string "agency"
+    t.integer "old_id"
     t.index ["user_id", "order"], name: "index_jobs_on_user_id_and_order"
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 
   create_table "notes", force: :cascade do |t|
-    t.bigint "job_id", null: false
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "category"
-    t.index ["job_id"], name: "index_notes_on_job_id"
+    t.integer "old_job_id"
+    t.uuid "job_id"
   end
 
   create_table "settings", force: :cascade do |t|
@@ -126,5 +128,4 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_14_174434) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "feedbacks", "users"
-  add_foreign_key "notes", "jobs"
 end
