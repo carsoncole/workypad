@@ -46,7 +46,7 @@ class Job < ApplicationRecord
     if notes.any?
       exact_days_since_last_note?.floor
     else
-      0
+      nil
     end
   end
 
@@ -54,8 +54,27 @@ class Job < ApplicationRecord
     if notes.any?
       (Time.now - notes.order(:created_at).last.created_at).to_f/1.day
     else
-      0
+      nil
     end
+  end
+
+  def card_color?
+    if days_since_last_note?.nil?
+      nil
+    elsif days_since_last_note? < 2
+      'bg-red-200'
+    elsif days_since_last_note? < 5
+      'bg-red-100'
+    elsif days_since_last_note? < 9
+      nil
+    elsif days_since_last_note? < 15
+      'bg-blue-100'
+    elsif days_since_last_note? < 20
+      'bg-blue-200'
+    else
+      'bg-blue-300'
+    end
+
   end
 
   private
