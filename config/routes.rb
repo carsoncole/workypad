@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     resources :notes, only: [:index, :create, :destroy, :edit, :update]
   end
 
-  resources :settings, only: [:show, :edit, :update]
+  resources :settings, only: [:show, :edit, :update, :destroy]
 
   resources :feedbacks, only: [:index, :create, :destroy]
 

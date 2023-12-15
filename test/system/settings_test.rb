@@ -21,4 +21,13 @@ class SettingsTest < ApplicationSystemTestCase
     assert_equal 23, @user.setting.reload.days_to_auto_archive
   end
 
+  test "should destroy user and all their data" do
+    visit setting_url(@user.setting.id, as: @user)
+    accept_confirm do
+      click_on "DESTROY ACCOUNT AND ALL DATA"
+    end
+    assert_selector "h1", text: "WorkyPad"
+    assert_text "Your account has been deleted. To access Workypad, you can sign up again."
+  end
+
 end

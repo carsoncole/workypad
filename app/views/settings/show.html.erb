@@ -1,15 +1,21 @@
-<div id="settings" class="">
-  <div class="dark:text-white mb-10">
-    <h1 class="font-bold text-4xl">Settings</h1>
+<div id="settings" class="container lg:w-2/3 mx-auto">
+  <div class="dark:text-white mb-20">
+    <h1 class="font-bold text-4xl mb-14">Settings</h1>
 
-    <div class="mx-auto h-60 w-full md:w-1/2 flex flex-col">
+    <div class="h-48 flex flex-col">
 
       <%= turbo_frame_tag @setting do %>
         <%= render @setting %>
 
         <%= link_to "Edit", edit_setting_path(@setting), class: "mt-20 max-w-max rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium", data: { turbo_frame: "setting_#{@setting.id}" } %>
       <% end %>
-
     </div>
+  </div>
+
+
+</div>
+<div class="container">
+  <div class="mt-20 flex justify-center border-t-2 border-b-2 py-3">
+    <%= button_to "DESTROY ACCOUNT AND ALL DATA", setting_path(current_user.setting), method: :delete, data: { "turbo-method": :delete, "turbo-confirm": 'Are you sure? This will delete your account, and login credentials immediately, and can not be recovered.' }, class: 'button-lg py-2 px-12 bg-rose-600 text-white' %>
   </div>
 </div>

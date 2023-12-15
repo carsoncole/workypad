@@ -22,6 +22,11 @@ class SettingsController < ApplicationController
     end
   end
 
+  def destroy
+    current_user.destroy
+    redirect_to root_path, alert: 'Your account has been deleted. To access Workypad, you can sign up again.'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_setting
