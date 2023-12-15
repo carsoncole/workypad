@@ -6,6 +6,10 @@ class NoteTest < ActiveSupport::TestCase
     @user = @job.user
   end
 
+  test "initial note" do
+    assert_equal "Created", @job.notes.first.content
+  end
+
   test "creating note on application" do
     @job.applied!
     assert_equal 'applied', @job.notes.last.category

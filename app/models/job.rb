@@ -20,17 +20,13 @@ class Job < ApplicationRecord
   validates :agency, presence: true, unless: -> (obj){ obj.entity.present? }
   validates :title, :status, presence: true
 
-  # before_create :add_initial_order!
+  after_create :create_initial_note!
   before_save :update_status_updated_at!, if: ->(obj){ !obj.persisted? || obj.will_save_change_to_status? }
   before_save :update_applied_at!, if: ->(obj){ obj.status_changed?(to: 'applied') }
   before_save :update_archived_at!, if: ->(obj){ obj.status_changed?(to: 'archived') }
   after_save :create_applied_note!, if: -> (obj){obj.status_previously_changed?(to: 'applied')}
   after_save :create_archived_note!, if: -> (obj){obj.status_previously_changed?(to: 'archived')}
 
-
-  def add_initial_order!
-    self.order = (self.user.jobs.order(:order)&.last&.order || 0) + 1
-  end
 
   def reorder_up!
     self.update order_position: :up
@@ -85,6 +81,10 @@ class Job < ApplicationRecord
 
   def update_applied_at!
     self.applied_at = Date.today
+  end
+
+  def create_initial_note!
+    self.notes.create(content: "Created")
   end
 
   def create_applied_note!
