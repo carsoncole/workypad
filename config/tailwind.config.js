@@ -8,6 +8,7 @@ module.exports = {
     './app/views/**/*.{erb,haml,html,slim}'
   ],
   safelist: [
+    'bg-white',
     'bg-red-100',
     'bg-red-200',
     'bg-red-300',
