@@ -42,7 +42,7 @@ class NotesController < ApplicationController
     @note.destroy!
 
     respond_to do |format|
-      format.html { redirect_to job_notes_url(@job), notice: "Note was successfully destroyed." }
+      format.html { redirect_to job_notes_url(@job) }
       format.json { head :no_content }
     end
   end

@@ -34,8 +34,9 @@ class NotesTest < ApplicationSystemTestCase
 
   test "should destroy Note" do
     visit job_notes_url(@job, as: @user)
+    content = @note.content
+    assert_text content
     click_on "destroy_#{@note.id}"
-
-    assert_text "Note was successfully destroyed"
+    assert_no_text content
   end
 end
