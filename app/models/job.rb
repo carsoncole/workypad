@@ -16,8 +16,9 @@ class Job < ApplicationRecord
   belongs_to :source, optional: true
   has_many :notes, dependent: :destroy
 
-  validates :entity, presence: true, unless: -> (obj){ obj.agency.present? }
-  validates :agency, presence: true, unless: -> (obj){ obj.entity.present? }
+  # validates :entity, presence: true, unless: -> (obj){ obj.agency.present? }
+  # validates :agency, presence: true, unless: -> (obj){ obj.entity.present? }
+  validate :entity_or_agency
   validates :title, :status, presence: true
 
   after_create :create_initial_note!
@@ -91,6 +92,12 @@ class Job < ApplicationRecord
   end
 
   private
+
+  def entity_or_agency
+    if [entity, agency].compact.count == 0
+      errors.add(:base, "Specify at least one entity or agency")
+    end
+  end
 
   def update_status_updated_at!
     self.status_updated_at = Time.now
