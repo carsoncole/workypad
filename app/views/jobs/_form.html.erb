@@ -11,52 +11,94 @@
     </div>
   <% end %>
 
-  <div class="lg:grid lg:grid-cols-2 gap-4">
-    <div>
-      <div class="my-5">
-        <%= form.label :entity, class: "font-bold" %>
-        <%= form.text_field :entity, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:text-gray-900" %>
+  <div class="flex flex-col">
+
+    <div class="my-16">
+      <div class="md:flex gap-5 mb-8">
+        <div class="flex-1 mb-6 md:mb-0">
+          <div class="h-12">
+            <%= form.label :entity, class: "font-bold" %>
+            <div class="text-sm text-gray-500">Who will you be doing work for?</div>
+          </div>
+          <%= form.text_field :entity, placeholder: 'Employer, organization...', class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:text-gray-900" %>
+        </div>
+        <div class="flex-1">
+          <div class="md:h-12">
+            <%= form.label :entity_url, class: "font-bold" %>
+          </div>
+          <%= form.text_field :entity_url,  class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:text-gray-900" %>
+        </div>
+      </div>
+      <div class="w-1/2">
+        <div class="h-12">
+          <%= form.label :agency, class: "font-bold" %>
+          <div class="text-sm text-gray-500">Job found through a recruitor?</div>
+        </div>
+        <%= form.text_field :agency, placeholder: 'Recruiter, headhunter ... ', class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:text-gray-900" %>
+      </div>
+    </div>
+
+    <div class="mb-16 ">
+      <div class="">
+        <%= form.label :status, class: "font-bold" %>
+        <%= form.select :status, options_for_select(Job.statuses.map{|k,v| [k.humanize.capitalize, k] }, @job.status), {}, class: "block shadow w-1/2 rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:text-gray-900", id: "status-select" %>
+      </div>
+    </div>
+
+
+
+    <div class="my-12">
+
+      <div class="flex flex-col md:flex-row gap-5 mb-12">
+        <div class="flex-1">
+          <div class="md:h-12">
+            <%= form.label :job_title, class: "font-bold" %>
+          </div>
+          <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:text-gray-900" %>
+        </div>
+
+
+
+        <div class="flex-1">
+          <div class="md:h-12">
+            <%= form.label :job_url, class: "font-bold" %>
+          </div>
+          <%= form.text_field :url, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:text-gray-900" %>
+        </div>
       </div>
 
-      <div class="my-5">
-        <%= form.label :agency, class: "font-bold" %>
-        <%= form.text_field :agency, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:text-gray-900" %>
+      <div class="flex flex-col md:flex-row md:justify-evenly gap-5">
+        <div class="w-full">
+          <div class="h-12">
+            <%= form.label :mode, class: "font-bold" %>
+            <div class="text-sm text-gray-500">Where will you be working?</div>
+          </div>
+          <%= form.select :mode, options_for_select(Job.modes.map{|k,v| [k.humanize.capitalize, k] }, @job.mode), { include_blank: true}, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:text-gray-900", id: "mode-select" %>
+        </div>
+        <div class="w-full">
+          <div class="h-12">
+            <%= form.label :source, class: "font-bold" %>
+            <div class="text-sm text-gray-500">Where was the job sourced from?</div>
+          </div>
+          <%= form.collection_select :source_id, Source.order(:name), :id, :name, { include_blank: true }, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:text-gray-900" %>
+        </div>
+        <div class="w-full">
+          <div class="h-12">
+            <%= form.label :arrangement, class: "font-bold" %>
+            <div class="text-sm text-gray-500">What is the nature of employment?</div>
+          </div>
+          <%= form.select :arrangement, options_for_select(Job.arrangements.map{|k,v| [k.humanize.capitalize, k] }, @job.arrangement), {include_blank: true }, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:text-gray-900", id: "arrangement-select" %>
+        </div>
+
       </div>
 
-      <div class="my-5">
-        <%= form.label :entity_url, class: "font-bold" %>
-        <%= form.text_field :entity_url, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:text-gray-900" %>
-      </div>
 
-      <div class="my-5">
-        <%= form.label :title, class: "font-bold" %>
-        <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:text-gray-900" %>
-      </div>
 
-      <div class="my-5">
-        <%= form.label :url, class: "font-bold" %>
-        <%= form.text_field :url, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:text-gray-900" %>
-      </div>
-
-      <div class="my-5">
-        <%= form.label :mode, class: "font-bold" %>
-        <%= form.select :mode, options_for_select(Job.modes.map{|k,v| [k.humanize.capitalize, k] }, @job.mode), {}, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:text-gray-900", id: "mode-select" %>
-      </div>
-
-      <div class="my-5">
-        <%= form.label :arrangement, class: "font-bold" %>
-        <%= form.select :arrangement, options_for_select(Job.arrangements.map{|k,v| [k.humanize.capitalize, k] }, @job.arrangement), {}, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:text-gray-900", id: "arrangement-select" %>
-      </div>
-
-      <div class="my-5">
-        <%= form.label :description, class: "font-bold" %>
-        <%= form.text_area :description, rows: 6, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:text-gray-900" %>
-      </div>
-
-      <div class="my-5">
+      <div class="my-5 md:w-1/2">
         <%= form.label :salary, class: "font-bold" %>
         <%= form.text_field :salary, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:text-gray-900" %>
       </div>
+
     </div>
 
     <div>
@@ -72,23 +114,17 @@
         <%= form.label :primary_contact_phone, class: "font-bold" %>
         <%= form.text_field :primary_contact_phone, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:text-gray-900" %>
       </div>
-      <div class="my-5">
-        <%= form.label :status, class: "font-bold" %>
-        <%= form.select :status, options_for_select(Job.statuses.map{|k,v| [k.humanize.capitalize, k] }, @job.status), {}, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:text-gray-900", id: "status-select" %>
-      </div>
-      <div class="my-5">
-        <%= form.label :source, class: "font-bold" %>
-        <%= form.collection_select :source_id, Source.order(:name), :id, :name, { include_blank: true }, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:text-gray-900" %>
-      </div>
+
     </div>
   </div>
 
   <div class="my-5 field">
     <div class="p-3 bg-gray-50 rounded-lg text-black">
       <div class='pb-3'>
-        <%= form.label :listing, class: "font-bold" %>
+        <%= form.label :job_post, class: "font-bold" %>
+        <div class="mb-3 text-sm">Cut and paste job post here</div>
       </div>
-      <%= form.rich_text_area :listing %>
+      <%= form.rich_text_area :listing, placeholder: 'Job post...' %>
     </div>
   </div>
 

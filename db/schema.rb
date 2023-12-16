@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_15_183616) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_16_193511) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -28,11 +28,11 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_15_183616) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.bigint "record_id", null: false
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
+    t.integer "old_record_id"
+    t.bigint "record_id"
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
-    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
   create_table "active_storage_blobs", force: :cascade do |t|
@@ -81,7 +81,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_15_183616) do
     t.integer "mode"
     t.datetime "status_updated_at"
     t.datetime "applied_at"
-    t.integer "arrangement", default: 1, null: false
+    t.integer "arrangement"
     t.datetime "archived_at"
     t.string "entity_url"
     t.string "agency"

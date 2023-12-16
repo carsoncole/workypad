@@ -94,7 +94,7 @@ class Job < ApplicationRecord
   private
 
   def entity_or_agency
-    if [entity, agency].compact.count == 0
+    if [entity, agency].compact.delete_if(&:empty?).count == 0
       errors.add(:base, "Specify at least one entity or agency")
     end
   end

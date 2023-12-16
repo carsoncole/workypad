@@ -44,9 +44,9 @@
           <%= job.mode.humanize.capitalize %>
         </div>
       <% end %>
-      <% if !job.not_set? %>
+      <% if job.arrangement %>
         <div class="bg-gray-700 text-white max-w-max px-2 py-1 text-sm">
-          <%= job.arrangement.humanize.capitalize %>
+          <%= job&.arrangement&.humanize&.capitalize %>
         </div>
       <% end %>
       <% if job.agency.present? %>

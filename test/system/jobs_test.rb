@@ -19,13 +19,12 @@ class JobsTest < ApplicationSystemTestCase
     visit jobs_url(as: @user)
     click_on "New job"
 
-    fill_in "Description", with: @job.description
     fill_in "Entity", with: @job.entity
     select('Applied', :from => 'status-select')
     select('Remote', :from => 'mode-select')
     select('Full time', :from => 'arrangement-select')
-    fill_in "Title", with: @job.title
-    fill_in "Url", with: @job.url
+    fill_in "job[title]", with: @job.title
+    fill_in "job[url]", with: @job.url
     click_on "Create Job"
 
     assert_text "Job was successfully created"
@@ -36,6 +35,21 @@ class JobsTest < ApplicationSystemTestCase
 
     click_on "Back to jobs"
   end
+
+  test "error message on creating a job" do
+    visit jobs_url(as: @user)
+    click_on "New job"
+    click_on "Create Job"
+
+    assert_text "Specify at least one entity or agency"
+    fill_in "Entity", with: @job.entity
+    click_on "Create Job"
+    assert_text "Title can't be blank"
+    fill_in "job[title]", with: @job.title
+    click_on "Create Job"
+    assert_text "Job was successfully created"
+  end
+
 
   test "should update Job" do
     visit job_url(@job, as: @user)
