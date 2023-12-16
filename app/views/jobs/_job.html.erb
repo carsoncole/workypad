@@ -1,7 +1,7 @@
-<div id="<%= dom_id job %> options" data-controller="visibility" class="card w-full max-h-max <%= action_name == 'show' ? 'md:w-1/2' : 'md:w-96' %> <%= job.card_color?  %>" data-sortable-update-url="<%= job_path(job) %>">
+<div id="<%= dom_id job %> options" data-controller="visibility" class="card w-full max-h-max <%= action_name == 'show' ? 'md:w-1/2' : 'md:w-96' %>" data-sortable-update-url="<%= job_path(job) %>">
   <div class="flex justify-between">
 
-    <div class="<%= action_name == 'show' ? 'w-12 text-2xl' : 'w-8' %> bg-gray-500 text-white font-bold flex items-center justify-center">
+    <div class="<%= action_name == 'show' ? 'w-12 text-2xl' : 'w-8' %> <%= job.card_status_color?  %> text-white font-bold flex items-center justify-center">
       <div class="-rotate-90 uppercase">
         <%= job.status.humanize %>
       </div>

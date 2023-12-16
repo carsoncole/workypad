@@ -56,21 +56,38 @@ class Job < ApplicationRecord
 
   def card_color?
     if days_since_last_note?.nil?
-      'bg-white'
+      'border-gray-300'
     elsif days_since_last_note? < 2
-      'bg-red-200'
+      'border-red-400'
     elsif days_since_last_note? < 5
-      'bg-red-100'
+      'border-red-300'
     elsif days_since_last_note? < 9
-      'bg-white'
+      'border-gray-300'
     elsif days_since_last_note? < 15
-      'bg-blue-100'
+      'border-blue-300'
     elsif days_since_last_note? < 20
-      'bg-blue-200'
+      'border-blue-500'
     else
-      'bg-blue-300'
+      'border-blue-700'
     end
+  end
 
+  def card_status_color?
+    if days_since_last_note?.nil?
+      ''
+    elsif days_since_last_note? < 2
+      'bg-red-400'
+    elsif days_since_last_note? < 5
+      'bg-red-300'
+    elsif days_since_last_note? < 9
+      'bg-gray-300'
+    elsif days_since_last_note? < 15
+      'bg-blue-300'
+    elsif days_since_last_note? < 20
+      'bg-blue-500'
+    else
+      'bg-blue-700'
+    end
   end
 
   private

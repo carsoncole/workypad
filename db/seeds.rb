@@ -9,7 +9,7 @@ end
 user = User.find_by_email('test@example.com') || create(:user, email: 'test@example.com', password: 'password')
 
 20.times do
-  create(:job,
+  job = create(:job,
     user: user,
     description: Faker::Lorem.paragraph,
     mode: Job.modes.pluck(0)[rand(Job.modes.size)],
@@ -22,10 +22,12 @@ user = User.find_by_email('test@example.com') || create(:user, email: 'test@exam
     primary_contact_email: Faker::Internet.email,
     salary: "$#{rand(200) + 75},000"
   )
+  job.notes.first.update(created_at: Time.now - (rand(50)+20).days)
 end
 
 Job.all.each do |j|
   (rand(20) + 1).times do
-    create(:note, job: j)
+    note = create(:note, job: j)
+    note.update(created_at: Time.now - rand(30).days)
   end
 end
