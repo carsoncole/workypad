@@ -24,7 +24,7 @@ class NotesTest < ApplicationSystemTestCase
   test "should create note on jobs" do
     visit jobs_url(as: @user)
     find("#visibility_#{@job.id}").click
-    click_on "new_job_note_#{@job.id}"
+    click_on "new_job_note_#{@job.id}", match: :first
 
     fill_in "note-content", with: @note.content
     select('Interview', :from => 'category-select')
