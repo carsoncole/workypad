@@ -1,5 +1,4 @@
 class NotesController < ApplicationController
-  before_action :require_login
   before_action :set_job
   before_action :set_note, only: %i[ edit update destroy ]
 

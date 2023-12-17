@@ -1,5 +1,4 @@
 class SourcesController < ApplicationController
-  before_action :require_login
   before_action :set_source, only: %i[ show edit update destroy ]
 
   # GET /sources or /sources.json

@@ -1,6 +1,4 @@
 class FeedbacksController < ApplicationController
-  before_action :require_login
-
   before_action :set_feedback, only: %i[ destroy ]
 
   def index

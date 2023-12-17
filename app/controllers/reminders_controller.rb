@@ -1,5 +1,4 @@
 class RemindersController < ApplicationController
-  before_action :require_login
   before_action :set_job, only: %i[ create destroy ]
   before_action :set_reminder, only: %i[ destroy ]
 

@@ -1,5 +1,4 @@
 class JobsController < ApplicationController
-  before_action :require_login
   before_action :set_job, only: %i[ show edit update destroy ]
 
   def dashboard

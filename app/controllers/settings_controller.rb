@@ -1,5 +1,4 @@
 class SettingsController < ApplicationController
-  before_action :require_login
   before_action :set_setting, only: %i[ show edit update ]
 
   def show
