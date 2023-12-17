@@ -75,7 +75,7 @@ class Job < ApplicationRecord
 
   def card_status_color?
     if days_since_last_note?.nil?
-      ''
+      'bg-gray-300'
     elsif days_since_last_note? < 2
       'bg-red-400'
     elsif days_since_last_note? < 5
