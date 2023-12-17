@@ -1,0 +1,12 @@
+<% if job.reminders.not_due.any? %>
+  <%- job.reminders.not_due.each do |r| %>
+    <div class="w-full mt-6 text-center <%= action_name == 'index' ? 'py-2 text-sm' : 'py-4' %> px-4 bg-slate-200 text-sm text-slate-400 font-medium tracking-tight" id="<%= dom_id job %>_not_due">
+      <%= r.way.humanize %>
+      in
+      <%= pluralize(((r.remind_at - Time.now).to_f/1.day).ceil, "day") %>
+      <%= link_to job_reminder_path(job, r), method: :delete, id: "#{ dom_id job }_not_due_delete", data: { "turbo_method": :delete, "turbo_frame": "_top" } do %>
+        <svg fill="none" stroke="currentColor" stroke-width="1.5" class="inline-block w-6 h-6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

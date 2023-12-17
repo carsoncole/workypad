@@ -15,6 +15,7 @@ class Job < ApplicationRecord
   belongs_to :user
   belongs_to :source, optional: true
   has_many :notes, dependent: :destroy
+  has_many :reminders, dependent: :destroy
 
   # validates :entity, presence: true, unless: -> (obj){ obj.agency.present? }
   # validates :agency, presence: true, unless: -> (obj){ obj.entity.present? }

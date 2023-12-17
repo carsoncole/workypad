@@ -103,8 +103,12 @@
   <%= render 'actions', job: job %>
 </div>
 
-<% if action_name == 'show' %>
+<% if action_name == 'show' && !job.listing.blank? %>
   <div class='text-xs my-10'>
     <%= job.listing %>
   </div>
 <% end %>
+
+<div>
+  <%= render 'reminders/new', reminder: Reminder.new(job: job), job: job  %>
+</div>

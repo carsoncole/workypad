@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_16_193511) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_17_030940) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -97,6 +97,15 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_16_193511) do
     t.integer "category"
     t.integer "old_job_id"
     t.uuid "job_id"
+  end
+
+  create_table "reminders", force: :cascade do |t|
+    t.uuid "job_id"
+    t.datetime "remind_at"
+    t.integer "way", null: false
+    t.boolean "is_dismissed", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "settings", force: :cascade do |t|

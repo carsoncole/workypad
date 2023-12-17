@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   resources :jobs do
     resources :notes, only: [:index, :create, :destroy, :edit, :update]
+    resources :reminders, only: [:create, :destroy]
   end
 
   resources :settings, only: [:show, :edit, :update, :destroy]

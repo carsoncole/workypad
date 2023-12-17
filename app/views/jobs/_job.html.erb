@@ -7,16 +7,24 @@
       </div>
     </div>
 
-    <div class="px-7 py-4 w-full">
-      <%= link_to job, data: { turbo_frame: '_top' } do %>
-        <%= render 'header', job: job %>
-      <% end %>
+    <div class="w-full">
+      <div>
+        <%= render 'reminders/show_due', job: job %>
+      </div>
+      <div class="px-7 py-4">
+        <%= link_to job, data: { turbo_frame: '_top' } do %>
+          <%= render 'header', job: job %>
+        <% end %>
 
-      <div data-visibility-target="hideable" class="<%= action_name == 'show' ? nil : 'hidden' %>">
-        <%= render 'details',  job: job %>
+        <div data-visibility-target="hideable" class="<%= action_name == 'show' ? nil : 'hidden' %>">
+          <%= render 'details',  job: job %>
+
+        </div>
 
       </div>
-
+      <div>
+        <%= render 'reminders/show_not_due', job: job %>
+      </div>
     </div>
   </div>
 </div>

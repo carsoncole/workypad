@@ -18,10 +18,10 @@ class JobsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create job" do
     assert_difference("Job.count") do
-      post jobs_url(as: @user), params: { job: { description: @job.description, entity: @job.entity, order: @job.order, status: @job.status, title: @job.title, url: @job.url } }
+      post jobs_url(as: @user), params: { job: { description: @job.description, entity: @job.entity, status: @job.status, title: @job.title, url: @job.url } }
     end
 
-    assert_redirected_to job_url(Job.last)
+    assert_redirected_to job_url(Job.order(:created_at).last)
   end
 
   test "should show job" do

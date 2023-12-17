@@ -1,0 +1,16 @@
+<% unless job.reminders.any? %>
+  <div class="my-6">
+    <%= form_for [job, reminder], data: { "turbo_frame": "_top" } do |f| %>
+
+      <div class="flex flex-wrap gap-2 justify-center items-center">
+        <%= hidden_field_tag :job_id, reminder.job_id %>
+        <%= f.select :way, options_for_select(Reminder.ways.map{|k,v| [k.humanize.capitalize, k] }, reminder.way), {}, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-1 dark:text-gray-900", id: "way-select" %>
+
+        <%= f.select :days_to_remind, options_for_select(Reminder::DAYS_TO_REMIND.map{|k| [pluralize(k, "day"), k]}, reminder.days_to_remind), { }, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-1 dark:text-gray-900 w-32", id: "days-to-remind-select" %>
+
+        <%= f.submit "Remind me", class: "button font-bold bg-amber-500"%>
+      </div>
+
+    <% end %>
+  </div>
+<% end %>
