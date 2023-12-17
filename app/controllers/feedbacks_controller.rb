@@ -1,4 +1,3 @@
-#TODO add ability to delete
 class FeedbacksController < ApplicationController
   before_action :require_login
 
