@@ -8,7 +8,7 @@
       <% end %>
     </div>
   <% else %>
-    <div class='text-gray-800 text-2xl tracking-tight truncate'>
+    <div class='text-gray-800 w-60 text-2xl tracking-tight truncate'>
       <% if job.entity.present? %>
         <%= job.entity %>
       <% elsif job.agency.present? %>
@@ -33,7 +33,7 @@
 
 <div class='flex flex-col mb-3'>
 
-  <div class="text-lg md:text-lg font-medium tracking-tight text-ellipsis mb-4">
+  <div class="text-lg w-60 md:text-lg font-medium tracking-tight text-ellipsis mb-4">
     <%= link_to job.title, job_path(job), class: "hover:text-gray-500 text-gray-800", data: { turbo_frame: '_top' } %>
   </div>
 
