@@ -6,7 +6,7 @@
 
   <body class="dark:bg-gray-900 pb-5">
     <%= render 'shared/header' %>
-    <%= render 'shared/flash' if flash.present? %>
+    <%= render 'shared/flash' if flash.any? %>
     <main class="container mx-auto mt-5 px-4">
       <%= render 'shared/nav' %>
       <%= yield %>

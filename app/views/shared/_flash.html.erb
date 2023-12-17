@@ -1,10 +1,10 @@
 <%# OPTIMIZE Added disappearing flash messages %>
-<div id="flash" class='h-12 mb-10 font-bold'>
-  <% flash.each do |key, value| %>
+<div id="flash" class='mb-10 font-medium'>
+  <% flash.each do |key, msg| %>
     <%- if alert.present? %>
-      <div class="flash <%= key %> bg-red-50 text-red-500 align-middle px-7 py-2"><%= value %></div>
-    <%- else %>
-      <div class="flash <%= key %> bg-green-50 text-green-500 align-middle px-7 py-2"><%= value %></div>
+      <div class="flash <%= key %> bg-red-100 text-red-500 text-center px-7 py-3"><%= msg %></div>
+    <%- elsif notice.present? %>
+      <div class="flash <%= key %> bg-green-50 text-green-500 align-middle px-7 py-2"><%= msg %></div>
     <%- end %>
   <% end %>
 </div>
