@@ -8,7 +8,7 @@
 
         <%= f.select :days_to_remind, options_for_select(Reminder::DAYS_TO_REMIND.map{|k| [pluralize(k, "day"), k]}, reminder.days_to_remind), { }, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-1 dark:text-gray-900 w-32", id: "days-to-remind-select" %>
 
-        <%= f.submit "Remind me", class: "button font-bold bg-amber-500"%>
+        <%= f.submit "Remind me", class: "button"%>
       </div>
 
     <% end %>

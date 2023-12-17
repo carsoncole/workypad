@@ -69,7 +69,7 @@ class JobsTest < ApplicationSystemTestCase
     visit job_url(@job, as: @user)
 
     assert_difference('Job.archived.count') do
-      click_on "archive_job_#{@job.id}"
+      click_on "archive_job_#{@job.id}", match: :first
       sleep 1
     end
   end

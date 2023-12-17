@@ -1,6 +1,6 @@
 <div class="flex justify-between border-b mb-1 pb-1 font-bold text-sm uppercase items-center items-middle">
   <% if action_name == 'index' %>
-    <div class='text-gray-800 text-lg tracking-tight truncate w-60'>
+    <div class='text-gray-800 w-80 text-lg tracking-tight truncate'>
       <% if job.entity.present? %>
         <%= job.entity %>
       <% elsif job.agency.present? %>

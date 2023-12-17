@@ -1,6 +1,6 @@
 <% if job.reminders.due.any? %>
   <%- job.reminders.due.each do |r| %>
-    <div class="text-center <%= action_name == 'index' ? 'w-full py-2 text-sm' : 'py-4' %> px-4 bg-amber-300 font-bold text-gray-600" id="<%= dom_id job %>_is_due">
+    <div class="text-center <%= action_name == 'index' ? 'py-2 text-sm' : 'py-4' %> px-4 bg-amber-300 font-bold text-gray-600" id="<%= dom_id job %>_is_due">
       <%= r.way.humanize %>
       is due
       <%= link_to job_reminder_path(job, r), method: :delete, data: { "turbo_method": :delete, turbo_frame: "_top" }, id: "#{ dom_id job }_due_delete"  do %>
