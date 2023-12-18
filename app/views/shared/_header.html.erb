@@ -1,10 +1,10 @@
 <header class='flex justify-between align-middle py-3 px-5 bg-violet-800 dark:bg-gray-700'>
-  <div class="flex items-center">
+  <div class="flex items-center gap-12">
     <div class='font-bold text-2xl'>
       <%= link_to "WorkyPad", root_path, class: 'align-middle tracking-tight dark:text-white text-white hover:text-gray-300' %>
     </div>
     <% if !signed_in? %>
-      <div class="text-sm font-light ml-10">
+      <div class="text-sm font-medium">
         <%= link_to "Pricing", pricing_path, class: 'text-gray-200 hover:text-gray-400' %>
       </div>
     <% end %>
