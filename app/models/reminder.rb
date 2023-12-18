@@ -1,7 +1,7 @@
 class Reminder < ApplicationRecord
   belongs_to :job
 
-  enum :way, [ "follow up message", "follow up call" ], default: "follow up call"
+  enum :way, [ "follow up message", "follow up call", "review" ], default: "follow up call"
 
   scope :due, -> { where("remind_at < ?", Time.now) }
   scope :not_due, -> { where("remind_at > ?", Time.now) }
