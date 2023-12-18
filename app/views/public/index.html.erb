@@ -17,7 +17,7 @@
 
       <div class="">
         <%= video_tag "/dashboard-1.mp4", controls: false, autoplay: true, muted:
-        true, loop: true, id: "bgvideobg", class: "", type:
+        true, loop: true, id: "bgvideobg", class: "shadow-xl", type:
         "video/webm" %>
       </div>
     </div>
@@ -40,13 +40,13 @@
     </div>
   </div>
 
-  <div class="bg-gray-100 dark:text-gray-900 py-28">
+  <div class="bg-gray-800 text-white dark:text-gray-100 py-28">
     <div class="container md:w-1/2 px-5 md:px-0 mx-auto">
-      <div class="text-4xl md:text-5xl md:w-1/2 font-medium mb-10 md:max-w-prose tracking-tight">
+      <div class="text-4xl md:text-5xl md:w-1/2 font-medium mb-10 md:max-w-prose tracking-tight text-gray-100 mb-20">
         Comprehensive overview of your job prospects on a single dashboard.
       </div>
-      <div class="text-2xl max-w-prose font-medium text-gray-500 mb-28">
-        Quickly view all your jobs on one board, <span class="font-bold text-gray-900">moving</span> around job cards in whatever priority you desire.
+      <div class="text-2xl max-w-prose font-light text-gray-100 mb-20">
+        Effortlessly gain a comprehensive overview of your entire job landscape with the convenience of a centralized board. Instantly access and manage all your jobs in one glance, allowing you to <span class="font-bold">strategically arrange and rearrange job cards</span> based on your priorities. Enjoy the flexibility to customize the display to suit your preferences, empowering you with a dynamic and intuitive platform to navigate through your professional opportunities seamlessly. Your job management experience, elevated.
       </div>
       <%= image_tag "job-board.png", class: 'rounded-lg align-center shadow-xl', alt: "Dashboard showing all prospective jobs in blocks, that can be drag-and-dropped indicating priority" %>
     </div>
@@ -54,11 +54,11 @@
 
   <div class="py-28">
     <div class="container md:w-1/2 px-5 md:px-0 mx-auto">
-      <div class="text-4xl md:text-5xl md:w-1/2 font-medium mb-10 md:max-w-prose tracking-tight">
+      <div class="text-4xl md:text-5xl md:w-1/2 font-medium mb-10 md:max-w-prose tracking-tight mb-20">
         Convenient quick access to important job details on one card.
       </div>
-      <div class="text-2xl max-w-prose font-medium text-gray-500 mb-28">
-        All the needed job details on one easily<span class="font-bold text-gray-900 dark:text-gray-100"> clickable card</span> so no digging around for information.
+      <div class="text-2xl max-w-prose font-light text-gray-600 dark:text-gray-100 mb-28">
+        Access all essential job details seamlessly consolidated onto a <span class="font-bold text-gray-900 dark:text-gray-100">single, user-friendly card.</span> No more tedious searching or digging around for information – every crucial aspect is just one click away, streamlining your workflow for unparalleled convenience and efficiency. Experience the simplicity of having all the necessary job details at your fingertips.
       </div>
       <%= image_tag "job.png", class: 'rounded-lg mt-6 md:ml-40 shadow-lg', alt: 'Detailed job post' %>
     </div>
@@ -66,11 +66,11 @@
 
   <div class="bg-gray-100 dark:text-gray-900 py-28">
     <div class="container md:w-1/2 px-5 md:px-0 mx-auto">
-      <div class="text-4xl md:text-5xl md:w-1/2 font-medium mb-10 md:max-w-prose tracking-tight">
+      <div class="text-4xl md:text-5xl md:w-1/2 font-medium mb-10 md:max-w-prose tracking-tight mb-20">
         Easily log employer interactions, covering applications, interviews, and calls.
       </div>
-      <div class="text-2xl max-w-prose font-medium text-gray-500 mb-28">
-        Notate calls, emails, interviews and any other activity as it occurs on a job, so you can track and have a record of all interactions.
+      <div class="text-2xl max-w-prose font-light text-gray-700 mb-20 ">
+        Efficiently document every facet of your professional journey by annotating calls, emails, interviews, and any additional activities in real-time. This ensures a meticulous record of your job-related experiences, allowing you to effortlessly track and maintain a comprehensive log of all interactions. Stay organized, stay informed – your career progression, simplified.
       </div>
       <%= image_tag "notes.png", class: 'rounded-lg mt-6 md:ml-40 md:w-1/2 shadow-lg', alt: 'Notes on a job with the category, such as "interview", "call" etc.' %>
     </div>
@@ -78,11 +78,19 @@
 
   <div class="py-28">
     <div class="container md:w-1/2 px-5 md:px-0 mx-auto">
-      <div class="text-4xl md:text-5xl md:w-1/2 font-medium mb-10 md:max-w-prose tracking-tight">
+      <div class="text-4xl md:text-5xl md:w-1/2 font-medium mb-10 md:max-w-prose tracking-tight mb-20">
         Say goodbye to complicated tracking spreadsheets.
       </div>
-      <div class="text-2xl max-w-prose font-medium text-gray-500 mb-20">
-        Spreadsheets can track everything, but easily become too much, losing track of their purpose<span class="font-bold text-gray-900"> and aren't quickly retrievable</span> for when that important call comes in.
+      <div class="text-2xl max-w-prose font-light text-gray-600 text-gray-600 dark:text-gray-100">
+        <div class="mb-6">
+          Spreadsheets, while comprehensive, often fall short in the realm of practicality. They can indeed track everything, but the ease of use diminishes as they become overloaded, making it challenging to stay focused on their intended purpose. Adding notes is not a seamless process, often requiring additional effort and disrupting the flow of your workflow. Retrieving crucial information becomes a time-consuming task, as these spreadsheets take their sweet time to pull up and load, especially when you're racing against the clock for that important call.
+        </div>
+        <div class="mb-6">
+          Moreover, the process of sorting data is not as straightforward as it should be, introducing complexities that can hinder efficiency. <span class="font-bold text-gray-900 dark:text-gray-100">The sheer number of columns in a spreadsheet can also pose a readability challenge,</span> making it hard to quickly and easily extract the pertinent details, especially when dealing with a multitude of entries.
+        </div>
+        <div class="">
+          In contrast, Workypad redefines this experience, providing a user-friendly platform where information is not just stored but easily accessible, notes can be added effortlessly, and the retrieval process is streamlined for swift decision-making. Say goodbye to the cumbersome limitations of spreadsheets and embrace the seamless efficiency of Workypad.
+        </div>
       </div>
       <div class="flex items-end justify-center">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="0.5" class="w-60 h-60" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.375 19.5h17.25m-17.25 0a1.125 1.125 0 0 1-1.125-1.125M3.375 19.5h7.5c.621 0 1.125-.504 1.125-1.125m-9.75 0V5.625m0 12.75v-1.5c0-.621.504-1.125 1.125-1.125m18.375 2.625V5.625m0 12.75c0 .621-.504 1.125-1.125 1.125m1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125m0 3.75h-7.5A1.125 1.125 0 0 1 12 18.375m9.75-12.75c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125m19.5 0v1.5c0 .621-.504 1.125-1.125 1.125M2.25 5.625v1.5c0 .621.504 1.125 1.125 1.125m0 0h17.25m-17.25 0h7.5c.621 0 1.125.504 1.125 1.125M3.375 8.25c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125m17.25-3.75h-7.5c-.621 0-1.125.504-1.125 1.125m8.625-1.125c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125m-17.25 0h7.5m-7.5 0c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125M12 10.875v-1.5m0 1.5c0 .621-.504 1.125-1.125 1.125M12 10.875c0 .621.504 1.125 1.125 1.125m-2.25 0c.621 0 1.125.504 1.125 1.125M13.125 12h7.5m-7.5 0c-.621 0-1.125.504-1.125 1.125M20.625 12c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125m-17.25 0h7.5M12 14.625v-1.5m0 1.5c0 .621-.504 1.125-1.125 1.125M12 14.625c0 .621.504 1.125 1.125 1.125m-2.25 0c.621 0 1.125.504 1.125 1.125m0 1.5v-1.5m0 0c0-.621.504-1.125 1.125-1.125m0 0h7.5"/></svg>
