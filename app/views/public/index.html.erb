@@ -1,16 +1,32 @@
 <div class="dark:text-white">
-  <div class="container mx-auto px-5">
-    <h1 class="mt-20 mb-10 tracking-tight text-6xl font-light dark:text-white">
-      <span class="border-r-2 pr-2 mr-5">
-        WorkyPad
-      </span>
-      <span class="font-bold">
-        Simplified
-      </span>
-       Job Search Tracking
-    </h1>
+  <div class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 md:p-20 py-10 px-4">
+    <div class='flex flex-col items-center'>
+      <h1 class="mb-10 tracking-tight font-light text-white text-2xl md:text-4xl flex flex-col md:flex-row items-center justify-center">
+        <span class="mr-5 font-bold text-5xl md:text-7xl">
+          WorkyPad
+        </span>
+        <div class="mt-2 md:mt-0 text-center md:text-start">
+          <span class="font-bold text-gray-900">
+            Simplified
+          </span>
+          <span class="font-bold">
+           Job Search Tracking
+          </span>
+        </div>
+      </h1>
 
+      <div class="">
+        <%= video_tag "/dd8.mp4", controls: false, autoplay: true, muted:
+        true, loop: true, id: "bgvideobg", class: "", type:
+        "video/webm" %>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="container mx-auto px-5">
     <%= render 'public/take_action' %>
+
 
     <div class="italic text-lg font-light max-w-prose p-10 rounded-lg bg-gray-100 dark:text-gray-800 text-center mb-20 mx-auto">
       "Securing a job requires managing various information, and the chaotic spreadsheet used for tracking became tiresome. I sought a comprehensive board for all potential job opportunities with an easy way to monitor their status. WorkyPad proved to be my ideal solution. - Carson, creator of WorkyPad.com"
@@ -21,7 +37,7 @@
 
   <div class="bg-gray-100 dark:text-gray-900 py-28">
     <div class="container md:w-1/2 px-5 md:px-0 mx-auto">
-      <div class="text-5xl md:w-1/2 font-medium mb-10 md:max-w-prose tracking-tight">
+      <div class="text-4xl md:text-5xl md:w-1/2 font-medium mb-10 md:max-w-prose tracking-tight">
         Comprehensive overview of your job prospects on a single dashboard.
       </div>
       <div class="text-2xl max-w-prose font-medium text-gray-500 mb-28">
@@ -31,24 +47,9 @@
     </div>
   </div>
 
-  <!--   <div class="py-28">
-      <div class="container md:w-1/2 px-5 md:px-0 mx-auto">
-        <div class="text-5xl md:w-1/2 font-medium mb-10 md:max-w-prose tracking-tight">
-          Drag-and-drop simplicity.
-        </div>
-        <div class="text-2xl max-w-prose font-medium text-gray-500 mb-28">
-          Lay out your jobs however you want,<span class="font-bold text-gray-900">easily dragging and dropping</span> anywhere on the board.
-        </div>
-        <video autoplay width="1024" height="768">
-          <source src="<%= asset_url('dashboard-drag-video.mp4') %>" type="video/mp4">
-        </video>
-      </div>
-    </div>
-   -->
-
   <div class="py-28">
     <div class="container md:w-1/2 px-5 md:px-0 mx-auto">
-      <div class="text-5xl md:w-1/2 font-medium mb-10 md:max-w-prose tracking-tight">
+      <div class="text-4xl md:text-5xl md:w-1/2 font-medium mb-10 md:max-w-prose tracking-tight">
         Convenient quick access to important job details on one card.
       </div>
       <div class="text-2xl max-w-prose font-medium text-gray-500 mb-28">
@@ -60,7 +61,7 @@
 
   <div class="bg-gray-100 dark:text-gray-900 py-28">
     <div class="container md:w-1/2 px-5 md:px-0 mx-auto">
-      <div class="text-5xl md:w-1/2 font-medium mb-10 md:max-w-prose tracking-tight">
+      <div class="text-4xl md:text-5xl md:w-1/2 font-medium mb-10 md:max-w-prose tracking-tight">
         Easily log employer interactions, covering applications, interviews, and calls.
       </div>
       <div class="text-2xl max-w-prose font-medium text-gray-500 mb-28">
@@ -72,7 +73,7 @@
 
   <div class="py-28">
     <div class="container md:w-1/2 px-5 md:px-0 mx-auto">
-      <div class="text-5xl md:w-1/2 font-medium mb-10 md:max-w-prose tracking-tight">
+      <div class="text-4xl md:text-5xl md:w-1/2 font-medium mb-10 md:max-w-prose tracking-tight">
         Say goodbye to complicated tracking spreadsheets.
       </div>
       <div class="text-2xl max-w-prose font-medium text-gray-500 mb-20">

@@ -7,7 +7,7 @@
   <body class="dark:bg-gray-900 pb-5">
     <%= render 'shared/header' %>
     <%= render 'shared/flash' if flash.any? %>
-    <main class="mt-5">
+    <main class="">
       <%= render 'shared/nav' %>
       <%= yield %>
     <%= render 'shared/footer' if signed_in? %>
