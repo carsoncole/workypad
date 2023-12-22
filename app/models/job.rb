@@ -91,6 +91,10 @@ class Job < ApplicationRecord
     end
   end
 
+  def self.search(user, query)
+    user.jobs.where("entity ILIKE ? OR agency ILIKE ? OR title ILIKE ? OR primary_contact_name ILIKE ?", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%").order(:order)
+  end
+
   private
 
   def entity_or_agency
