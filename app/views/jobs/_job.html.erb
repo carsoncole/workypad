@@ -2,7 +2,7 @@
   <div class="flex justify-between">
 
     <div class="<%= action_name == 'show' ? 'w-12 text-2xl' : 'w-8' %> text-white <%= job.card_status_color?  %> font-bold flex items-center justify-center">
-      <div class="-rotate-90 uppercase">
+      <div class="-rotate-90 uppercase" id="<%= dom_id(job) %>_status">
         <%= job.status.humanize %>
       </div>
     </div>

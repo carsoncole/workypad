@@ -13,6 +13,9 @@ class JobsTest < ApplicationSystemTestCase
   test "should show job" do
     visit job_url(@job, as: @user)
     assert_text @job.entity.upcase
+    within("#job_#{@job.id}_status") do
+      assert_text "RESEARCH"
+    end
   end
 
   test "should create job" do
@@ -20,7 +23,6 @@ class JobsTest < ApplicationSystemTestCase
     click_on "New job"
 
     fill_in "Entity", with: @job.entity
-    select('Applied', :from => 'status-select')
     select('Remote', :from => 'mode-select')
     select('Full time', :from => 'arrangement-select')
     fill_in "job[title]", with: @job.title
@@ -31,6 +33,10 @@ class JobsTest < ApplicationSystemTestCase
     within "#job-indicators" do
       assert_text "Full time"
       assert_text "Remote"
+    end
+
+    within "#job_#{@user.jobs.order(:created_at).last.id}_status" do
+      assert_text "RESEARCH"
     end
 
     click_on "Back to jobs"
@@ -103,12 +109,53 @@ class JobsTest < ApplicationSystemTestCase
     assert_no_text "Congratulations! You earned the Application Badge by submitting over 2 applications today."
 
     # 3 of applied! and applied notes
-    create_list(:note, 2, job: @job, category: 'applied')
-    @job.applied!
+    create_list(:note, 3, job: @job, category: 'applied')
 
     visit jobs_url(as: @user)
     assert_text "Congratulations! You earned the Application Badge by submitting over 2 applications today."
+  end
 
+  test "status indicators" do
+    visit job_url(@job, as: @user)
+    within "#statuses" do
+      assert_text "Created"
+      assert_no_text "Applied"
+      assert_no_text "Archived"
+    end
 
+    click_on "new_job_note_#{@job.id}", match: :first
+    select('Applied', :from => 'category-select')
+    click_on "Create Note"
+
+    click_on "Back to Job"
+    within "#statuses" do
+      assert_text "Applied"
+    end
+
+    click_on "new_job_note_#{@job.id}", match: :first
+    select('Archived', :from => 'category-select')
+    click_on "Create Note"
+    click_on "Back to Job"
+
+    within "#statuses" do
+      assert_text "Archived"
+      assert_text "Applied"
+      assert_text "Created"
+    end
+
+    click_on "new_job_note_#{@job.id}", match: :first
+    select('Applied', :from => 'category-select')
+    click_on "Create Note"
+    click_on "Back to Job"
+    within "#statuses" do
+      assert_text "Applied", count: 2
+    end
+
+    click_on "archive_job_#{@job.id}", match: :first
+    within "#statuses" do
+      assert_text "Applied", count: 2
+    end
+    click_on "new_job_note_#{@job.id}", match: :first
+    assert_selector ".category", text: "Archived", count: 2
   end
 end

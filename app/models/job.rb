@@ -5,9 +5,9 @@ class Job < ApplicationRecord
 
   has_rich_text :listing
 
-  attr_accessor :position
+  attr_accessor :position, :updated_by_note
 
-  enum status: { research: 0, applied: 1, interview: 2, test: 3, offer: 4, archived: 5, accepted: 6 }
+  enum status: { research: 0, applied: 1, interviewed: 2, tested: 3, offered: 4, archived: 5, accepted: 6 }
   enum mode: { office: 1, hybrid: 2, remote: 3, other: 9 }
   enum arrangement: { not_set: 1, full_time: 2, contract: 3, contract_to_hire: 4, freelance: 5, internship: 6}
 
@@ -21,11 +21,9 @@ class Job < ApplicationRecord
   validate :entity_or_agency
   validates :title, :status, presence: true
 
-  after_create :create_initial_note!
   before_save :update_status_updated_at!, if: ->(obj){ !obj.persisted? || obj.will_save_change_to_status? }
-  before_save :update_applied_at!, if: ->(obj){ obj.status_changed?(to: 'applied') }
-  before_save :update_archived_at!, if: ->(obj){ obj.status_changed?(to: 'archived') }
-  after_save :create_applied_note!, if: -> (obj){obj.status_previously_changed?(to: 'applied')}
+  after_create :create_initial_note!
+
   after_save :create_archived_note!, if: -> (obj){obj.status_previously_changed?(to: 'archived')}
 
 
@@ -97,34 +95,22 @@ class Job < ApplicationRecord
 
   private
 
+  def update_status_updated_at!
+    self.status_updated_at = Time.now
+  end
+
   def entity_or_agency
     if [entity, agency].compact.delete_if(&:empty?).count == 0
       errors.add(:base, "Specify at least one entity or agency")
     end
   end
 
-  def update_status_updated_at!
-    self.status_updated_at = Time.now
-  end
-
-  def update_applied_at!
-    self.applied_at = Date.today
-  end
-
   def create_initial_note!
-    self.notes.create(content: "Created")
-  end
-
-  def create_applied_note!
-    self.notes.applied.create(content: "Applied")
-  end
-
-  def update_archived_at!
-    self.archived_at = Date.today
+    self.notes.create(category: 'created', content: "Created")
   end
 
   def create_archived_note!
-    self.notes.archive.create(content: "Archived")
+    self.notes.archived.create(content: "Archived") unless self.updated_by_note
   end
 end
 

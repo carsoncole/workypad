@@ -10,29 +10,28 @@ class NoteTest < ActiveSupport::TestCase
     assert_equal "Created", @job.notes.first.content
   end
 
-  test "creating note on application" do
-    @job.applied!
-    assert_equal 'applied', @job.notes.last.category
+  test "applied with job status updated" do
+    create(:applied_note, job: @job )
+    assert_equal 'applied', @job.status
   end
 
-  test "creating note on archiving" do
-    @job.archived!
-    assert_equal 'archive', @job.notes.last.category
+  test "archived with job status updated" do
+    create(:archived_note, job: @job )
+    assert_equal 'archived', @job.status
   end
 
-  test "applied at with category applied" do
-    assert_not_equal 'applied', @job.status
-    assert_nil @job.applied_at
-
-    note = create(:note, job: @job, category: 'applied')
-    assert_not_nil @job.reload.applied_at
+  test "interviewed with job status updated" do
+    create(:interviewed_note, job: @job )
+    assert_equal 'interviewed', @job.status
   end
 
-  test "archived at with category archive" do
-    assert_not_equal 'archived', @job.status
-    assert_nil @job.archived_at
+  test "tested with job status updated" do
+    create(:tested_note, job: @job )
+    assert_equal 'tested', @job.status
+  end
 
-    note = create(:note, job: @job, category: 'archive')
-    assert_not_nil @job.reload.archived_at
+  test "accepted with job status updated" do
+    create(:accepted_note, job: @job )
+    assert_equal 'accepted', @job.status
   end
 end

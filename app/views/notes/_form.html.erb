@@ -22,7 +22,7 @@
   </div>
 
   <div class="my-5 md:w-1/3">
-    <%= form.select :category, options_for_select(Note.categories.map{|k,v| [k.humanize.capitalize, k] }, @note.category), {}, id: 'category-select', class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:text-gray-900" %>
+    <%= form.select :category, options_for_select(Note.categories.except("created").map{|k,v| [k.humanize.capitalize, k] }, @note.category), {}, id: 'category-select', class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full dark:text-gray-900" %>
   </div>
 
   <div class="inline">

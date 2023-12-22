@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_22_170731) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_22_192126) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
   enable_extension "pgcrypto"
@@ -81,9 +81,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_22_170731) do
     t.string "primary_contact_phone"
     t.integer "mode"
     t.datetime "status_updated_at"
-    t.datetime "applied_at"
     t.integer "arrangement"
-    t.datetime "archived_at"
     t.string "entity_url"
     t.string "agency"
     t.integer "old_id"

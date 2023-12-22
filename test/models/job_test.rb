@@ -23,28 +23,20 @@ class JobTest < ActiveSupport::TestCase
     assert_equal Job.rank(:order).fourth, list[2]
   end
 
-  test "applied at with status applied" do
-    job = create(:job, user: @user)
-    assert_nil job.applied_at
-
-    job.applied!
-    assert_not_nil job.reload.applied_at
-  end
-
   test 'status updated at' do
     job = create(:job, user: @user)
     assert_not_nil job.status_updated_at
 
-    job.test!
+    job.tested!
     assert job.saved_change_to_status_updated_at?
   end
 
-  test 'archived at' do
+  test 'archived' do
     job = create(:job, user: @user)
-    assert_nil job.archived_at
+    assert_not job.archived?
 
     job.archived!
-    assert_not_nil job.reload.archived_at
+    assert job.archived?
   end
 
   test "days since last note" do
@@ -59,11 +51,11 @@ class JobTest < ActiveSupport::TestCase
   test "search" do
     job_1 = create(:job, user: @user, title: 'Wacky manager')
     job_2 = create(:job, user: @user, agency: 'Woozy Doozy Co')
-    job_3 = create(:job, user: @user, primary_contact_name: 'Will Wonky')
+    job_3 = create(:job, user: @user, primary_contact_name: 'Willx Wonky')
 
     assert_equal 3, Job.search(@user, 'w').count
     assert_equal job_1, Job.search(@user, 'wacky').first
     assert_equal job_2, Job.search(@user, 'doo').first
-    assert_equal job_3, Job.search(@user, 'will').first
+    assert_equal job_3, Job.search(@user, 'willx').first
   end
 end
