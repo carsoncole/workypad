@@ -11,6 +11,10 @@
     @apply dark:text-white;
   }
 
+  .trix-content li {
+    @apply list-disc;
+  }
+
   .card {
     @apply bg-white rounded sm:w-max shadow-md dark:shadow-slate-500/50;
   }
