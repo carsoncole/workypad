@@ -10,8 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_17_030940) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_22_170731) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_trgm"
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
@@ -86,6 +87,10 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_17_030940) do
     t.string "entity_url"
     t.string "agency"
     t.integer "old_id"
+    t.index ["agency"], name: "index_jobs_on_agency", opclass: :gin_trgm_ops, using: :gin
+    t.index ["entity"], name: "index_jobs_on_entity", opclass: :gin_trgm_ops, using: :gin
+    t.index ["primary_contact_name"], name: "index_jobs_on_primary_contact_name", opclass: :gin_trgm_ops, using: :gin
+    t.index ["title"], name: "index_jobs_on_title", opclass: :gin_trgm_ops, using: :gin
     t.index ["user_id", "order"], name: "index_jobs_on_user_id_and_order"
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end
