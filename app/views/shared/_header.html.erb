@@ -1,5 +1,5 @@
 <header class='flex justify-between align-middle py-3 px-5 bg-violet-800 dark:bg-gray-700'>
-  <div class="flex items-center gap-12">
+  <div class="flex items-center gap-5">
     <div class='font-bold text-2xl'>
       <%= link_to "WorkyPad", root_path, class: 'align-middle tracking-tight dark:text-white text-white hover:text-gray-300' %>
     </div>
@@ -9,19 +9,21 @@
       </div>
     <% end %>
 
-    <% if signed_in? %>
-      <% if current_user.application_badge? %>
-        <div class="ml-5">
-          <%= render 'shared/badge_application_small', id: 'application_badge' %>
-        </div>
-      <% end %>
+    <div class="flex">
+      <% if signed_in? %>
+        <% if current_user.application_badge? %>
+          <div class="ml-5">
+            <%= render 'shared/badge_application_small', id: 'application_badge' %>
+          </div>
+        <% end %>
 
-      <% if current_user.fire_badge? %>
-        <div class="ml-1">
-          <%= render 'shared/badge_fire_small', id: 'fire_badge' %>
-        </div>
+        <% if current_user.fire_badge? %>
+          <div class="ml-1">
+            <%= render 'shared/badge_fire_small', id: 'fire_badge' %>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
 
   </div>
 
