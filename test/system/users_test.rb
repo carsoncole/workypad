@@ -30,7 +30,7 @@ class UsersTest < ApplicationSystemTestCase
     jobs.each { |j| create(:applied_note, job: j) }
     visit root_url(as: @user)
     assert_no_text "Congratulations! You earned the Application Badge by submitting over 2 applications today."
-    assert_text "You're fire! You submitted over 4 applications today."
+    assert_text "You're on fire! You submitted over 4 applications today."
 
     assert "#fire_badge"
   end
