@@ -55,4 +55,15 @@ class JobTest < ActiveSupport::TestCase
     assert_equal 7, job.days_since_last_note?
     assert job.exact_days_since_last_note? > 7
   end
+
+  test "search" do
+    job_1 = create(:job, user: @user, title: 'Wacky manager')
+    job_2 = create(:job, user: @user, agency: 'Woozy Doozy Co')
+    job_3 = create(:job, user: @user, primary_contact_name: 'Will Wonky')
+
+    assert_equal 3, Job.search(@user, 'w').count
+    assert_equal job_1, Job.search(@user, 'wacky').first
+    assert_equal job_2, Job.search(@user, 'doo').first
+    assert_equal job_3, Job.search(@user, 'will').first
+  end
 end
