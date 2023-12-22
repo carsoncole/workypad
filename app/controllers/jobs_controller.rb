@@ -27,6 +27,7 @@ class JobsController < ApplicationController
 
   def show
     @notes = @job.notes.limit(3)
+    @statuses = @job.notes.status_update
   end
 
   def new
@@ -61,12 +62,7 @@ class JobsController < ApplicationController
       @job.update order_position: params[:job][:position].to_i - 1
       redirect_to jobs_url
     elsif @job.update(job_params)
-
-      if @job.status_previously_was == 'archived'
-        redirect_to jobs_url(archived: true)
-      else
-        redirect_to jobs_url
-      end
+      redirect_to job_url(@job)
     else
       render :edit, status: :unprocessable_entity
     end
@@ -90,6 +86,6 @@ class JobsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def job_params
-      params.require(:job).permit(:entity, :title, :url, :description, :status, :order, :source_id, :salary, :primary_contact_email, :primary_contact_phone, :primary_contact_name, :mode, :agency, :position, :arrangement, :entity_url, :listing )
+      params.require(:job).permit(:entity, :title, :url, :description, :status, :order, :source_id, :salary, :primary_contact_email, :primary_contact_phone, :primary_contact_name, :mode, :agency, :position, :arrangement, :entity_url, :listing, :updated_by_note )
     end
 end

@@ -28,24 +28,9 @@
   <% end %>
 
 
-  <div class="my-3 flex flex-col">
-    <div class='text-xs'>Status</div>
-    <div class="font-normal">
-      Created:
-      <%= job.created_at.strftime('%D') %>
-    </div>
-    <% if job.applied_at.present? %>
-      <div class="font-normal">
-        Applied:
-        <%= job.applied_at.strftime('%D') %>
-      </div>
-    <% end %>
-    <% if job.archived_at.present? %>
-      <div class="font-normal">
-        Archived:
-        <%= job.archived_at.strftime('%D') %>
-      </div>
-    <% end %>
+  <div class="my-3 flex flex-col" id="statuses">
+    <div class='text-xs'>Activity</div>
+    <%= render partial: 'jobs/status', collection: @statuses %>
   </div>
 
   <% if job.primary_contact_name? || job.primary_contact_phone? || job.primary_contact_email? %>
