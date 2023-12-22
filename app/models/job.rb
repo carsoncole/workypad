@@ -26,7 +26,6 @@ class Job < ApplicationRecord
 
   after_save :create_archived_note!, if: -> (obj){obj.status_previously_changed?(to: 'archived')}
 
-
   def reorder_up!
     self.update order_position: :up
     self
