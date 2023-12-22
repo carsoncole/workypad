@@ -27,7 +27,6 @@ class JobsController < ApplicationController
 
   def show
     @notes = @job.notes.limit(3)
-    @statuses = @job.notes.status_update
   end
 
   def new

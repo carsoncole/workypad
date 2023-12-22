@@ -30,7 +30,7 @@
 
   <div class="my-3 flex flex-col" id="statuses">
     <div class='text-xs'>Activity</div>
-    <%= render partial: 'jobs/status', collection: @statuses %>
+    <%= render partial: 'jobs/status', collection: job.notes.status_update %>
   </div>
 
   <% if job.primary_contact_name? || job.primary_contact_phone? || job.primary_contact_email? %>

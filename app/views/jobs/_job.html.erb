@@ -1,4 +1,4 @@
-<div id="<%= dom_id job %> options" data-controller="visibility" class="w-max card max-h-max <%= action_name == 'show' ? '' : '' %>" data-sortable-update-url="<%= job_path(job) %>">
+<div id="<%= dom_id job %> options" data-controller="visibility" class="card <%= action_name == 'show' ? 'w-screen lg:w-3/4 xl:w-1/2' : 'w-max' %> max-h-max" data-sortable-update-url="<%= job_path(job) %>">
   <div class="flex justify-between">
 
     <div class="<%= action_name == 'show' ? 'w-12 text-2xl' : 'w-8' %> text-white <%= job.card_status_color?  %> font-bold flex items-center justify-center">
