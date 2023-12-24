@@ -1,8 +1,8 @@
 <% if job.reminders.due.any? %>
   <%- job.reminders.due.each do |r| %>
-    <div class="text-center <%= action_name == 'index' ? 'py-2 text-sm' : 'py-4' %> px-4 bg-amber-300 font-bold text-gray-600" id="<%= dom_id job %>_is_due">
+    <div class="flex items-center gap-1 justify-center <%= action_name == 'index' ? 'py-2 text-sm' : 'py-4' %> px-4 bg-amber-300 font-bold text-gray-600" id="<%= dom_id job %>_is_due">
+      <svg fill="none" stroke="currentColor" stroke-width="1.5" class="w-5 h-5 inline-block" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0M3.124 7.5A8.969 8.969 0 0 1 5.292 3m13.416 0a8.969 8.969 0 0 1 2.168 4.5"/></svg>
       <%= r.way.humanize %>
-      is due
       <%= link_to job_reminder_path(job, r), method: :delete, data: { "turbo_method": :delete, turbo_frame: "_top" }, id: "#{ dom_id job }_due_delete"  do %>
         <svg fill="none" stroke="currentColor" stroke-width="1.5" class="inline-block w-6 h-6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg>
       <% end %>
