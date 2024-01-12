@@ -5,6 +5,10 @@ class UserTest < ActiveSupport::TestCase
     @user = create(:user)
   end
 
+  test "creating initial user sources" do
+    assert @user.sources.any?
+  end
+
   test "application badge" do
     assert_not @user.application_badge?
 

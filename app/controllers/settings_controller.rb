@@ -2,6 +2,7 @@ class SettingsController < ApplicationController
   before_action :set_setting, only: %i[ show edit update ]
 
   def show
+    @sources = current_user.sources.order(:name)
   end
 
   # GET /settings/1/edit

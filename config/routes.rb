@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
 
   resources :settings, only: [:show, :edit, :update, :destroy]
+  resources :sources, only: [:edit, :new, :create, :update, :destroy]
 
   resources :feedbacks, only: [:index, :create, :destroy]
 

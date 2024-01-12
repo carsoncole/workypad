@@ -14,7 +14,7 @@ user = User.find_by_email('test@example.com') || create(:user, email: 'test@exam
     description: Faker::Lorem.paragraph,
     mode: Job.modes.pluck(0)[rand(Job.modes.size)],
     arrangement: Job.arrangements.pluck(0)[rand(Job.arrangements.size - 1) + 1],
-    source: Source.find(rand(Source.count) + 1),
+    source: user.sources[rand(user.sources.count)],
     status: Job.statuses.pluck(0)[rand(Job.statuses.size)],
     url: Faker::Internet.url,
     primary_contact_name: Faker::Name.name,

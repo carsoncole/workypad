@@ -5,8 +5,10 @@ class User < ApplicationRecord
   has_many :jobs, dependent: :destroy
   has_many :notes, through: :jobs
   has_many :feedbacks, dependent: :destroy
+  has_many :sources, dependent: :destroy
 
   after_create :create_setting!
+  after_create :create_initial_sources!
 
 
   # badge award if applied > 2 times today
@@ -23,5 +25,11 @@ class User < ApplicationRecord
 
   def create_setting!
     create_setting
+  end
+
+  def create_initial_sources!
+    Source::SOURCES.each do |source_name|
+      self.sources.create(name: source_name)
+    end
   end
 end

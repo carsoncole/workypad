@@ -14,6 +14,21 @@
 
 
 </div>
+
+<div class="">
+  <h2 class="text-2xl font-bold">Sources</h1>
+  <div class="">
+    <%= render @sources  %>
+  </div>
+  <div class="">
+    <%= link_to new_source_path do %>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" class="w-6 h-6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+    <% end %>
+  </div>
+</div>
+
+
+
 <div class="container">
   <div class="mt-20 flex justify-center border-t-2 border-b-2 py-3">
     <%= button_to "DESTROY ACCOUNT AND ALL DATA", setting_path(current_user.setting), method: :delete, data: { "turbo-method": :delete, "turbo-confirm": 'Are you sure? This will delete your account, and login credentials immediately, and can not be recovered.' }, class: 'button-lg py-2 px-12 bg-rose-600 text-white' %>

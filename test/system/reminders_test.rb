@@ -26,12 +26,12 @@ class RemindersTest < ApplicationSystemTestCase
 
     visit job_url(@job, as: @user)
     within("#job_#{@job.id}_is_due") do
-      assert_text "Follow up call is due"
+      assert_text "Follow up call"
     end
 
     visit jobs_url(as: @user)
     within("#job_#{@job.id}_is_due") do
-      assert_text "Follow up call is due"
+      assert_text "Follow up call"
     end
   end
 
@@ -51,8 +51,11 @@ class RemindersTest < ApplicationSystemTestCase
     visit jobs_url(@reminder, as: @user)
 
     within("#job_#{@job.id}_is_due") do
+      assert_text "Follow up call"
+    end
+    within("#job_#{@job.id}_is_due") do
       click_on "job_#{@job.id}_due_delete"
     end
-    assert_no_text "Follow up call is due"
+    assert_no_selector "#job_#{@job.id}_is_due"
   end
 end

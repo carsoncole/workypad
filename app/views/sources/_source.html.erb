@@ -1,12 +1,13 @@
-<div id="<%= dom_id source %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Name:</strong>
+<div id="<%= dom_id source %>" class="flex items-center gap-3 my-1">
+  <div class="">
     <%= source.name %>
-  </p>
-
-  <% if action_name != "show" %>
-    <%= link_to "Show this source", source, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to "Edit this source", edit_source_path(source), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
+  </div>
+  <div class="">
+    <%= button_to source, class: "", method: :delete, data: { "turbo-method": :delete, "turbo-confirm": 'Are you certain? This action will delete the source, but any jobs it is assigned to will remain unaffected.' } do %>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" class="w-5 h-5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg>
+    <% end %>
+  </div>
+  <div class="">
+    <%= link_to "Edit", edit_source_path(source), class: "rounded-lg py-1 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+  </div>
 </div>
