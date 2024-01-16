@@ -1,3 +1,4 @@
+#FIXME dark mode for settings view needs fixing
 class SettingsController < ApplicationController
   before_action :set_setting, only: %i[ show edit update ]
 

@@ -39,7 +39,7 @@ class Note < ApplicationRecord
     if job.last_note_status
       job.update(status: job.last_note_status.category)
     else
-      job.research!
+      job.created!
     end
   end
 end
