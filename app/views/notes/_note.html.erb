@@ -4,7 +4,7 @@
 
     <div class="flex gap-3">
       <div class='font-bold text-sm w-24'><%= note.created_at.strftime("%b %d '%y") %></div>
-      <div class='category bg-gray-300 dark:text-gray-900 rounded font-medium py-1 px-2 w-32 text-sm' id="<%= dom_id(note) %>_category">
+      <div class='category bg-gray-300 dark:text-gray-900 rounded font-bold py-1 px-2 w-32 text-sm' id="<%= dom_id(note) %>_category">
         <%= note&.category&.humanize&.capitalize %>
       </div>
     </div>
