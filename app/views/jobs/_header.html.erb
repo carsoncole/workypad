@@ -18,14 +18,14 @@
   <% end %>
 
   <div class="flex">
-    <% if days_since_status_change(job) > 7 %>
+    <% if job.days_since_status_change > 7 %>
       <div class="font-bold text-xl bg-red-700 text-white ml-1 py-1 px-2 rounded-lg align-middle">
-        <%= days_since_status_change(job) %>
+        <%= job.days_since_status_change %>
       </div>
       <button data-action="visibility#toggleTargets">
     <% else %>
       <div class="font-bold text-xl bg-gray-100 ml-1 py-1 px-2 rounded-lg align-middle">
-        <%= days_since_status_change(job) %>
+        <%= job.days_since_status_change %>
       </div>
     <% end %>
   </div>

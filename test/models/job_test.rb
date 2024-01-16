@@ -23,22 +23,6 @@ class JobTest < ActiveSupport::TestCase
     assert_equal Job.rank(:order).fourth, list[2]
   end
 
-  test 'status updated at' do
-    job = create(:job, user: @user)
-    assert_not_nil job.status_updated_at
-
-    job.tested!
-    assert job.saved_change_to_status_updated_at?
-  end
-
-  test 'archived' do
-    job = create(:job, user: @user)
-    assert_not job.archived?
-
-    job.archived!
-    assert job.archived?
-  end
-
   test "days since last note" do
     job = create(:job, user: @user)
     note = create(:note, job: job)
@@ -57,5 +41,34 @@ class JobTest < ActiveSupport::TestCase
     assert_equal job_1, Job.search(@user, 'wacky').first
     assert_equal job_2, Job.search(@user, 'doo').first
     assert_equal job_3, Job.search(@user, 'willx').first
+  end
+
+  test "last note status" do
+    job = create(:job)
+    create(:general_note, job: job)
+    applied_note = create(:applied_note, job: job)
+    create(:general_note, job: job)
+
+    assert_equal applied_note, job.last_note_status
+  end
+
+  test "days since last status change" do
+    job = create(:job)
+    assert_equal 0, job.days_since_status_change
+
+    first_note = job.notes.first
+    first_note.update(created_at: Time.now - 3.days)
+    assert_equal 3, job.days_since_status_change
+  end
+
+  test "days since last status change with deletes" do
+    job = create(:job)
+    first_note = job.notes.first
+    first_note.update(created_at: Time.now - 5.days)
+    applied_note = create(:applied_note, job: job)
+
+    assert_equal 0, job.days_since_status_change
+    applied_note.destroy
+    assert_equal 5, job.days_since_status_change
   end
 end

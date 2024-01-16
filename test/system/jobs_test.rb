@@ -14,7 +14,7 @@ class JobsTest < ApplicationSystemTestCase
     visit job_url(@job, as: @user)
     assert_text @job.entity.upcase
     within("#job_#{@job.id}_status") do
-      assert_text "RESEARCH"
+      assert_text "CREATED"
     end
   end
 
@@ -36,7 +36,7 @@ class JobsTest < ApplicationSystemTestCase
     end
 
     within "#job_#{@user.jobs.order(:created_at).last.id}_status" do
-      assert_text "RESEARCH"
+      assert_text "CREATED"
     end
 
     click_on "Back to jobs"

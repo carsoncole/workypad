@@ -7,7 +7,7 @@ class Job < ApplicationRecord
 
   attr_accessor :position, :updated_by_note
 
-  enum status: { research: 0, applied: 1, interviewed: 2, tested: 3, offered: 4, archived: 5, accepted: 6 }
+  enum status: { research: 0, applied: 1, interviewed: 2, tested: 3, offered: 4, archived: 5, accepted: 6, created: 99 }, _default: "created"
   enum mode: { office: 1, hybrid: 2, remote: 3, other: 9 }
   enum arrangement: { not_set: 1, full_time: 2, contract: 3, contract_to_hire: 4, freelance: 5, internship: 6}
 
@@ -21,7 +21,7 @@ class Job < ApplicationRecord
   validate :entity_or_agency
   validates :title, :status, presence: true
 
-  before_save :update_status_updated_at!, if: ->(obj){ !obj.persisted? || obj.will_save_change_to_status? }
+  before_save :update_status_updated_at!, if: ->(obj){ (!obj.persisted? || obj.will_save_change_to_status?) && !obj.updated_by_note }
   after_create :create_initial_note!
 
   after_save :create_archived_note!, if: -> (obj){obj.status_previously_changed?(to: 'archived')}
@@ -90,6 +90,18 @@ class Job < ApplicationRecord
 
   def self.search(user, query)
     user.jobs.where("entity ILIKE ? OR agency ILIKE ? OR title ILIKE ? OR primary_contact_name ILIKE ?", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%").order(:order)
+  end
+
+  def last_note_status
+    notes.status_update.order(:created_at).last
+  end
+
+  def days_since_status_change
+    if last_note_status
+      (Time.zone.now.to_date - last_note_status.created_at.to_date).ceil.to_i
+    else
+      (Time.zone.now.to_date - created_at.to_date).ceil.to_i
+    end
   end
 
   private
