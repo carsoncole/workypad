@@ -48,6 +48,8 @@ class NoteTest < ActiveSupport::TestCase
     assert_equal "applied", @job.status
     applied_note.destroy
     assert_equal "created", @job.status
+    @job.notes.destroy_all
+    assert_equal "created", @job.status
   end
 
   test "days since status change only on some notes" do
